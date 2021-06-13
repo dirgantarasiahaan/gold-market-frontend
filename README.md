@@ -1,4 +1,24 @@
-# ChallengeAngular
+# ChallengeAngular-Component
+How to implement component in project
+
+### How to run whis project
+1. clone this project using comment below:
+```clone
+git clone https://git.enigmacamp.com/enigma-camp/class-mandiri/dirgantara-p.-siahaan/angular_/challenge/challenge-angular.git
+```
+2. go to project, and run with comment below:
+```run
+ng serve --open
+```
+
+### Images Desktop
+<p align="col">
+![Screenshoot](/images/corousel.png)
+![Screenshoot](/images/register.png)
+![Screenshoot](/images/products.png)
+</p>
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
 
