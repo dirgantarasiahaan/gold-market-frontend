@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CorouselComponent implements OnInit {
 
-
-  title: string[] = ['Gold Investment', 'Platinum Investment', 'Silver Investment']
-  message: string[] = ['Invest your assets and g']
+  corousel = [
+    {
+      title: 'Gold Investment',
+      message: 'Invest your assets and wealth in gold',
+      image: '../../../../assets/carousel-1.png'
+    },
+    {
+      title: 'Gold Investment',
+      message: 'Invest your assets and wealth in platinum',
+      image: '../../../../assets/carousel-2.png'
+    },
+    {
+      title: 'Gold Investment',
+      message: 'Invest your assets and wealth in silver',
+      image: '../../../../assets/carousel-3.png'
+    }
+  ]
 
   constructor() { }
 

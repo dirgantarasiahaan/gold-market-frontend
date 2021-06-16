@@ -7,6 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
+  products = [
+    {
+      title: 'Platinum Investment',
+      image: '../../../../assets/1.png'
+    },
+    {
+      title: 'Gold Investment',
+      image: '../../../../assets/2.png'
+    },
+    {
+      title: 'Silver Investment',
+      image: '../../../../assets/3.png'
+    }
+  ]
+
   constructor() { }
 
   ngOnInit(): void {
