@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { DashboardModule } from './main/dashboard/dashboard.module';
+import { PagesComponent } from './pages/pages.component';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,7 @@ import { DashboardModule } from './main/dashboard/dashboard.module';
   ],
   imports: [
     BrowserModule,
-    DashboardModule
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
