@@ -1,5 +1,5 @@
 # ChallengeAngular-Component
-How to implement Data binding and directive in project
+How to implement Directives in project
 
 ### How to run whis project
 1. clone this project using comment below:
