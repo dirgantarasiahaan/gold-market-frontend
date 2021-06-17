@@ -6,8 +6,16 @@ How to implement Directives in project
 ```clone
 git clone https://git.enigmacamp.com/enigma-camp/class-mandiri/dirgantara-p.-siahaan/angular_/challenge/challenge-angular.git
 ```
-2. go to project, and run with comment below:
-```run
+2. go to project, run comment below:
+```npm
+npm init --y
+```
+3. install node modules, use comment below:
+```npm
+npm install
+```
+4. run project, use comment below:
+```ng
 ng serve --open
 ```
 
