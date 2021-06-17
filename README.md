@@ -1,5 +1,5 @@
 # ChallengeAngular-Component
-How to implement Directives in project
+How to implement Pipes in project
 
 1. clone this project using comment below:
 ```clone
