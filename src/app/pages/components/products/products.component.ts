@@ -7,17 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
+  title: string = 'our products'
+
   products = [
     {
-      title: 'Platinum Investment',
+      title: 'platinum investment',
       image: '../../../../assets/1.png'
     },
     {
-      title: 'Gold Investment',
+      title: 'gold investment',
       image: '../../../../assets/2.png'
     },
     {
-      title: 'Silver Investment',
+      title: 'silver investment',
       image: '../../../../assets/3.png'
     }
   ]

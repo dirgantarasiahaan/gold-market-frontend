@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarDirective } from './directives/navbar/navbar.directive';
+import { RelativeDatePipe } from './pipes/relative-date.pipe';
 
-
+const PIPES = [RelativeDatePipe]
+const DIRECTIVES = [NavbarDirective]
 
 @NgModule({
   declarations: [
-    NavbarDirective
+    ...DIRECTIVES,
+    ...PIPES
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    NavbarDirective
+    ...DIRECTIVES,
+    ...PIPES
   ]
 })
 export class SharedModule { }
