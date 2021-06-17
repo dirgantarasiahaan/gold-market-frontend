@@ -29,6 +29,7 @@ export class CorouselComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
   
 
