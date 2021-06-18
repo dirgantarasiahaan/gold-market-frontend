@@ -5,6 +5,7 @@ import { CorouselComponent } from './components/corousel/corousel.component';
 import { BenefitComponent } from './components/benefit/benefit.component';
 import { ProductsComponent } from './components/products/products.component';
 import { TemplateModule } from '../template/template.module';
+import { SharedModule } from '../shared/shared.module';
 
 const COMPONENTS:any = [PagesComponent, CorouselComponent, BenefitComponent, ProductsComponent]
 
@@ -12,7 +13,8 @@ const COMPONENTS:any = [PagesComponent, CorouselComponent, BenefitComponent, Pro
   declarations: [...COMPONENTS],
   imports: [
     CommonModule,
-    TemplateModule
+    TemplateModule,
+    SharedModule
   ],
   exports: [
     PagesComponent

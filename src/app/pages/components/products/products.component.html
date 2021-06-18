@@ -1,10 +1,10 @@
 <div class="row">
-    <h3>{{title | titlecase}}</h3>
+    <h3>{{ title | camelCase }}</h3>
     <div class="col-4 column" *ngFor="let product of products">
         <div class="card" style="width: 18rem center">
             <img src={{product.image}} class="card-img-top center" alt="Logo">
             <div class="card-body">
-              <h5 class="card-title">{{ product.title | titlecase}}</h5>
+              <h5 class="card-title">{{ product.title | camelCase }}</h5>
             </div>
           </div>
     </div>
