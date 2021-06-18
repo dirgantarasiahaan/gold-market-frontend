@@ -1,16 +1,21 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as dayjs from 'dayjs';
-
 
 @Pipe({
   name: 'camelCase'
 })
 export class CamelCasePipe implements PipeTransform {
 
-  transform(
-    value: any): string {
-  let first = value.substr(0,1).toUpperCase();
-  return first + value.substr(1);
-  }
+  transform(value:string): string{
+      let words = value.split(' ');
+      for(var i=0; i<words.length; i++){
+        let word = words[i];
+              words[i] = this.toUpperCase(word);
+          }
+      return words.join(' ');
+    }
+
+    private toUpperCase(word: string){
+        return word.substr(0,1).toUpperCase() + word.substr(1).toLowerCase()
+    }
 
 }
