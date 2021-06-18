@@ -7,7 +7,7 @@ export class CamelCasePipe implements PipeTransform {
 
   transform(value:string): string{
       let words = value.split(' ');
-      for(var i=0; i<words.length; i++){
+      for(let i=0; i<words.length; i++){
         let word = words[i];
               words[i] = this.toUpperCase(word);
           }
