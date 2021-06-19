@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-6 column">
+      <h3>Don't have and Account</h3>
+      <p>Let us help you register with pleasure.</p>
+      <button type="submit" class="btn btn-primary">Register</button>
+  </div>
+  <div class="col-6 column" style="float:none;margin:auto;" [formGroup]='loginForm'>
+    <h4>Sign In</h4>
+      <form>
+        <div class="mb-3">
+          <input type="text" formControlName='username' placeholder="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <input type="password" formControlName='password' placeholder="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)='Login()'>Submit</button>
+        <div class="mt-3">
+          <p>Or login with social platforms</p>
+          <table class="center">
+            <th><img src="../../../../assets/facebook.png" alt="facebook"></th>
+            <th><img src="../../../../assets/twitter.png" alt="google"></th>
+            <th><img src="../../../../assets/instagram.png" alt="iCloud"></th>
+            <th><img src="../../../../assets/instagram.png" alt="linkedin"></th>
+        </table>
+        </div>
+      </form>
+
+  </div>
+</div>
