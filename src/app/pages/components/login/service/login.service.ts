@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Login } from '../../model/login/login';
+import { Login } from '../model/login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
-
   tasks: Login = {
     username: '',
     password: ''

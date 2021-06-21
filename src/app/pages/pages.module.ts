@@ -8,6 +8,7 @@ import { TemplateModule } from '../template/template.module';
 import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginService } from './components/login/service/login.service';
 
 const COMPONENTS:any = [
   PagesComponent,
@@ -15,6 +16,8 @@ const COMPONENTS:any = [
   BenefitComponent,
   ProductsComponent,
   LoginComponent]
+
+  const SERVICES = [LoginService]
 
 @NgModule({
   declarations: [...COMPONENTS],
@@ -27,6 +30,9 @@ const COMPONENTS:any = [
   exports: [
     PagesComponent,
     LoginComponent
+  ],
+  providers: [
+    ...SERVICES
   ]
 })
 export class PagesModule { }

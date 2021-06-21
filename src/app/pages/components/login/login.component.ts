@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Login } from 'src/app/shared/model/login/login';
-import { LoginService } from 'src/app/shared/service/login/login.service';
+import { Login } from './model/login';
+import { LoginService } from './service/login.service';
+
 
 @Component({
   selector: 'app-login',
