@@ -9,6 +9,9 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './components/login/service/login.service';
+import { PlatinumComponent } from './components/platinum/platinum.component';
+import { GoldComponent } from './components/gold/gold.component';
+import { SilverComponent } from './components/silver/silver.component';
 
 const COMPONENTS:any = [
   PagesComponent,
@@ -20,7 +23,7 @@ const COMPONENTS:any = [
   const SERVICES = [LoginService]
 
 @NgModule({
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS, PlatinumComponent, GoldComponent, SilverComponent],
   imports: [
     CommonModule,
     TemplateModule,

@@ -1,12 +1,9 @@
 <div>
     <div class="row">
         <div class="col-4 column">
-            <img src="../../../../assets/Mandiri_logo.png" alt="mandiri logo" style="width: 125px;">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Event</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+            <img src="{{ mandiriLogo }}" alt="mandiri logo" style="width: 125px;">
+            <ul *ngFor="let item of link">
+                <li><a href="#">{{ item }}</a></li>
             </ul>
 
         </div>
@@ -18,9 +15,7 @@
         <div class="col-4 column">
             <h5>Follow us</h5>
             <table align="center">
-                <th><img src="../../../../assets/facebook.png" alt="facebook"></th>
-                <th><img src="../../../../assets/twitter.png" alt="twitter"></th>
-                <th><img src="../../../../assets/instagram.png" alt="instagram"></th>
+                  <th *ngFor="let media of sosialMedia"><img src="{{ media }}" alt="Logo"></th>
             </table>
         </div>
     </div>
