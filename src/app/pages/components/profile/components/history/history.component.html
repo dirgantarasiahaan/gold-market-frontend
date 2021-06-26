@@ -1,0 +1,27 @@
+<div class="row">
+  <h5>{{title}}</h5>
+  <div class="card c3" *ngFor="let transaction of transactions" >
+      <div class="row" >
+          <div class="col-md">
+              <h6>{{transaction.method}}</h6>
+          </div>
+          <div class="col-md jc">
+              <h6>{{transaction.date}}</h6>
+          </div>
+      </div>
+      <div class="row mt-2">
+          <h6>{{subtitle}}</h6>
+      </div>
+      <div class="row" >
+          <div class="col-md">
+              <p>Product Name: {{transaction.productname}}</p>
+              <p>Quantity: {{transaction.quantity}}</p>
+          </div>
+          <div class="col-md jc">
+              <p>Total Price</p>
+              <h6>{{transaction.price}}</h6>
+              <button type="button" class="btn btn-success" routerLink="/detailtransaction">DETAIL</button>
+          </div>
+      </div>
+  </div>
+</div>

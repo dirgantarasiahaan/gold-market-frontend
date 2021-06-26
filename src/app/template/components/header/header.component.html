@@ -1,29 +1,30 @@
 <nav appNavbar>
     <div class="container-fluid">
-        <img src="../../../../assets/Mandiri_logo.png" alt="mandiri logo">
+        <a routerLink=""><img src="../../../../assets/Mandiri_logo.png" alt="mandiri logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Platinum</a>
+            <a class="nav-link text-muted" [routerLink]="['/products/']" [queryParams]="{search: 'platinum', productId: 1}">Platinum</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Gold</a>
+            <a class="nav-link text-muted" [routerLink]="['/products/']" [queryParams]="{search: 'gold', productId: 2}">Gold</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Silver</a>
+            <a class="nav-link text-muted" [routerLink]="['/products/']" [queryParams]="{search: 'silver', productId: 3}">Silver</a>
           </li>
         </ul>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">{{sampleDate | relativeDate: "dddd, DD MMMM YYYY" }}</a>
+            <label class="nav-link text-muted">{{sampleDate | relativeDate: "dddd, DD MMMM YYYY" }}</label>
           </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
+          <a routerLink="/profile" class="m-2"><img src="../../../../assets/no-profile.png" alt="profile" style="width: 30px;"></a>
         </form>
       </div>
     </div>

@@ -1,0 +1,92 @@
+<div class="row size">
+  <div class="col">
+      <div class="card product">
+          <div class="row">
+              <div class="col-md-4">
+                  <img src="{{ product }}" class="img">
+              </div>
+              <div class="col-md-8">
+                  <div class="row">
+                      <div class="col-6 mt-5">
+                          <p>Your {{ title }} Amount</p>
+                          <h4> Rp.1620.000</h4>
+                          <p>{{ title }} Amount : 2 Gram</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col">
+      <div class="card product">
+          <div class="row">
+              <div class="col-4">
+                  <div class="row crd">
+                      <div class="col">
+                          <h6>Buy Price</h6>
+                          <h4> Rp.850.000/gr</h4>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-4">
+                  <div class="row crd">
+                      <div class="col">
+                          <h6>Sell Price</h6>
+                          <h4> Rp.810.000/gr</h4>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3 mt-5">
+      <div class="card" style="width: 18rem;">
+          <div class="row" ><br></div>
+          <div class="card-body">
+              <h6 class="card-title">Tabungan {{ title }} ku</h6>
+              <h4 class="text-muted">Rp.1.620.000</h4>
+              <p class="card-text">2 gram</p>
+          </div>
+      </div>
+  </div>
+  <div class="col-md mt-5">
+      <button type="button" class="btn btn-primary">Add Pocket</button>
+  </div>
+</div>
+
+
+<div class="card text-center mt-5">
+  <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+              <a class="nav-link active"  (click)="active='buy'">Buy {{title}}</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" (click)="active='sell'">Sell {{title}}</a>
+          </li>
+      </ul>
+  </div>
+  <div *ngIf="active=='buy'">
+    <app-buy-gold></app-buy-gold>
+  </div>
+  <div *ngIf="active=='sell'">
+    <app-sell-gold></app-sell-gold>
+  </div>
+
+</div>
+
+<div class="card">
+  <div class="card-body">
+      <div class="row">
+          <div class="col-md">
+              <button type="button" class="btn btn-primary">Buy Prices</button>
+              <button type="button" class="btn btn-light">Sell Prices</button>
+          </div>
+      </div>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+  <img src="../../../../assets/grafik.png" class="card-img-bottom" alt="..." height="500px">
+</div>
