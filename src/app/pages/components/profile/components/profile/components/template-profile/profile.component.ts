@@ -14,19 +14,9 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.refresh()
   }
 
   active: string;
   name: string = 'Wijaya Dodo'
-
-  changeRoute(route: string):void{
-    this.router.navigate(['/profile/' + route]).then((m) => this.refresh())
-  }
-
-
-  refresh():void{
-      this.active = this.activatedRoute.snapshot.paramMap.get('path');
-  }
 
 }

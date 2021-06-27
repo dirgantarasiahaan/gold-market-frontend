@@ -16,9 +16,9 @@
           <div class="row mt-3">
               <header><h6>My Profile</h6></header>
               <div class="h">
-                  <h6> <a class="a" (click)= "changeRoute('setting')">Setting Profile</a> </h6>
-                  <h6> <a class="a" (click)= "changeRoute('history')">Histories</a></h6>
-                  <h6> <a class="a" (click)= "changeRoute('wishlists')">Wishlists</a> </h6>
+                  <h6> <a class="a" routerLink="/profile/setting" >Setting Profile</a> </h6>
+                  <h6> <a class="a" routerLink="/profile/histories">Histories</a></h6>
+                  <h6> <a class="a" routerLink="/profile/wishlists">Wishlists</a> </h6>
               </div>
           </div>
           <div class="row mt-3">
@@ -30,7 +30,7 @@
   </div>
   <div class="col-lg-9">
       <div class="card c2">
-        <div *ngIf="active==null">
+        <!-- <div *ngIf="active==null">
           <h5>My profile</h5>
         </div>
           <div class="row" *ngIf="active=='setting'">
@@ -41,7 +41,8 @@
           </div>
           <div class="row" *ngIf="active=='wishlists'">
               <app-wishlist></app-wishlist>
-          </div>
+          </div> -->
+          <router-outlet></router-outlet>
       </div>
   </div>
 </div>
