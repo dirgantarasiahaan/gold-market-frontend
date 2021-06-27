@@ -19,4 +19,8 @@ export class ProfileComponent implements OnInit {
   active: string;
   name: string = 'Wijaya Dodo'
 
+  logout(): void{
+    sessionStorage.removeItem('credentials')
+  }
+
 }
