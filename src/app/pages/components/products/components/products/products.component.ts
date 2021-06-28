@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { Products } from '../../models/products';
 import { ProductsService } from '../../service/products.service';
 
@@ -18,6 +19,12 @@ export class ProductsComponent implements OnInit {
   search:string;
   product: string = ''
   title: string = ''
+  pocket: Products;
+  pocketName: string
+  id: string;
+  pocketQty: number
+  active: string = 'buy'
+
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
@@ -48,7 +55,7 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  active: string = 'buy'
+
 
   refresh(customerId:string): void{
     this.productsService.getAll(customerId).subscribe((response) => {
@@ -71,7 +78,7 @@ export class ProductsComponent implements OnInit {
     products.customer = { id: sessionStorage.getItem('id')}
     this.productsService.addPocket(products).subscribe((response) => {
       alert(`product ${response.pocketName} has been saved`)
-      window.location.reload()
+      this.ngOnInit()
     })
   }
 
@@ -82,7 +89,26 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  updatePocket(pocketName: string){
+    const pocket: Products = this.form.value;
+    pocket.id = this.id
+    pocket.pocketName = pocket.pocketName
+    pocket.pocketQty = this.pocketQty
+    pocket.customer = { id: sessionStorage.getItem('id')}
+    pocket.product = { id: '8a68e47278fdeeed0178fdf13eef0002'}
+    this.productsService.updatePocketById(pocket).subscribe((response) => {
 
+      alert('success update')
+      this.ngOnInit()
+    })
 
+  }
 
+  getPocketById(pocketId: string){
+    this.productsService.getPocketById(pocketId).subscribe((response) => {
+      this.id = response.id
+      this.pocketName = response.pocketName
+      this.pocketQty = response.pocketQty
+    })
+  }
 }

@@ -51,7 +51,8 @@
       <div class="d-flex ms-auto">
 
         <div class="me-2">
-            <a data-bs-toggle="modal" data-bs-target="#exampleModal1"><img src="../../../../../../assets/pen.png" alt="pen" style="width: 15px;"></a>
+            <a data-bs-toggle="modal" (click)="getPocketById(item.id)" data-bs-target="#exampleModal1"><img src="../../../../../../assets/pen.png" alt="pen" style="width: 15px;"></a>
+            {{ item.id }}
             <div class="col-md mt-5">
               <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -64,14 +65,14 @@
                               <form [formGroup]="form">
                                   <div class="mb-3">
                                       <label for="recipient-name" class="col-form-label">Pocket name:</label>
-                                      <input  formControlName="pocketName" type="text" placeholder="{{ item.pocketName }}" class="form-control" id="recipient-name">
+                                      <input  formControlName="pocketName" type="text" placeholder="{{ pocketName }}" class="form-control" id="recipient-name">
                                       <p>Description about your pocket</p>
                                   </div>
                               </form>
                           </div>
                           <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Edit</button>
+                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updatePocket(pocketName)">Edit</button>
                           </div>
                       </div>
                   </div>

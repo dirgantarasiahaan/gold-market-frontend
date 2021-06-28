@@ -42,6 +42,16 @@ export class ProductsService {
       .pipe(retry(5))
   }
 
+  getPocketById(pocketId: string): Observable<any>{
+    return this.http
+      .get<any>(`http://localhost:8888/pocket/${pocketId}`)
+      .pipe(retry(5))
+  }
 
+  updatePocketById(payload: Products): Observable<any>{
+    return this.http
+      .put(`http://localhost:8888/pocket`, payload)
+      .pipe(retry(5))
+  }
 
 }
