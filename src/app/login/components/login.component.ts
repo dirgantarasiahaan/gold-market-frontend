@@ -51,17 +51,18 @@ export class LoginComponent implements OnInit {
       const redirectBackUrl = sessionStorage.getItem('redirectBackUrl')
 
       this.loginService.login({
-        email: credentials.username,
+        username: credentials.username,
         password: credentials.password
-      }).subscribe((token) =>{
-        if (token) {
-          sessionStorage.setItem('credentials', token);
+      }).subscribe((response) =>{
+        if (response) {
+          sessionStorage.setItem('credentials', response.token);
+          sessionStorage.setItem('id', response.id);
           this.router.navigateByUrl(redirectBackUrl || '/')
         }
       },
       (error) => {
         const message = error.error;
-        alert(message.error)
+        alert("username and password not found, Try again !")
       })
     }
   }
