@@ -54,10 +54,6 @@ export class LoginComponent implements OnInit {
         username: credentials.username,
         password: credentials.password
       }).then((response:any) =>{
-        console.log(response);
-
-
-
         if (response) {
           sessionStorage.setItem('credentials', response.token);
           sessionStorage.setItem('id', response.id);

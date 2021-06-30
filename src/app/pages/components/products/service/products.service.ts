@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
+import { HistoryPrice } from '../models/history-price';
 import { Product } from '../models/product';
 import { Products } from '../models/products';
 
@@ -51,6 +52,12 @@ export class ProductsService {
   updatePocketById(payload: Products): Observable<any>{
     return this.http
       .put(`http://localhost:8888/pocket`, payload)
+      .pipe(retry(5))
+  }
+
+  getProductHistoryPrice(productId: string): Observable<HistoryPrice[]> {
+    return this.http
+      .get<HistoryPrice[]>(`http://localhost:8888/product/${productId}/history`)
       .pipe(retry(5))
   }
 

@@ -23,7 +23,10 @@ export class ProductsComponent implements OnInit {
   pocketName: string
   id: string;
   pocketQty: number
-  active: string = 'buy'
+  sell: string;
+  buy: string = 'active'
+  chartSell: string = 'btn btn-light'
+  chartBuy: string = 'btn btn-primary'
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -50,6 +53,7 @@ export class ProductsComponent implements OnInit {
         this.title = 'Silver'
       }
       this.refresh(this.customerId);
+      
       this.initForm();
 
     })
@@ -110,5 +114,26 @@ export class ProductsComponent implements OnInit {
       this.pocketName = response.pocketName
       this.pocketQty = response.pocketQty
     })
+  }
+
+  changeActive(activeate: string){
+    if(activeate == 'buy'){
+        this.buy = 'active'
+        this.sell = ''
+    } else {
+      this.buy = ''
+        this.sell = 'active'
+    }
+  }
+
+
+  changeChart(chart: string){
+    if(chart === 'buy'){
+      this.chartBuy = 'btn btn-primary'
+      this.chartSell = 'btn btn-light'
+    } else {
+      this.chartSell = 'btn btn-primary'
+      this.chartBuy = 'btn btn-light'
+    }
   }
 }

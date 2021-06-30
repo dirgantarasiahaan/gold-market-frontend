@@ -150,17 +150,17 @@
   <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
-              <a class="nav-link active"  (click)="active='buy'">Buy {{title}}</a>
+              <a class="nav-link {{ buy }}"  (click)="changeActive('buy')">Buy {{title}}</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" (click)="active='sell'">Sell {{title}}</a>
+              <a class="nav-link {{ sell }}" (click)="changeActive('sell')">Sell {{title}}</a>
           </li>
       </ul>
   </div>
-  <div *ngIf="active=='buy'">
+  <div *ngIf="buy=='active'">
     <app-buy-gold></app-buy-gold>
   </div>
-  <div *ngIf="active=='sell'">
+  <div *ngIf="sell=='active'">
     <app-sell-gold></app-sell-gold>
   </div>
 
@@ -170,11 +170,15 @@
   <div class="card-body">
       <div class="row">
           <div class="col-md">
-              <button type="button" class="btn btn-primary">Buy Prices</button>
-              <button type="button" class="btn btn-light">Sell Prices</button>
+              <button type="button" class="{{ chartBuy }}" (click)="changeChart('buy')">Buy Prices</button>
+              <button type="button" class="{{ chartSell }}" (click)="changeChart('sell')">Sell Prices</button>
           </div>
       </div>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
-  <img src="../../../../assets/grafik.png" class="card-img-bottom" alt="..." height="500px">
+  <div *ngIf="chartBuy=='btn btn-primary'">
+    <app-buy-chart></app-buy-chart>
+  </div>
+  <div *ngIf="chartSell=='btn btn-primary'">
+    <app-sell-chart></app-sell-chart>
+  </div>
 </div>
