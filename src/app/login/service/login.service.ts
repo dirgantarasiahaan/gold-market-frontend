@@ -32,29 +32,29 @@ export class LoginService {
     private readonly http: HttpClient
   ) { }
 
-  // login(credentials: { username: string, password: string}){
-  //   return this.http.post('http://localhost:8888/login', credentials)
-  //     .pipe(
-  //       retry(3),
-  //       map((response:any) => response)
-  //     );
-  // }
-
   login(credentials: { username: string, password: string}){
-    let promise = new Promise<void>((resolve, rejects) => {
-      let apiUrl = `http://localhost:8888/login`
-      this.http.post(apiUrl, credentials)
-        .toPromise()
-        .then(
-          (response:any) => {
-            resolve(response);
-          }, error => {
-            rejects(error);
-          }
-        )
-    })
-    return promise
+    return this.http.post('http://localhost:8888/login', credentials)
+      .pipe(
+        retry(3),
+        map((response:any) => response)
+      );
   }
+
+  // login(credentials: { username: string, password: string}){
+  //   let promise = new Promise<void>((resolve, rejects) => {
+  //     let apiUrl = `http://localhost:8888/login`
+  //     this.http.post(apiUrl, credentials)
+  //       .toPromise()
+  //       .then(
+  //         (response:any) => {
+  //           resolve(response);
+  //         }, error => {
+  //           rejects(error);
+  //         }
+  //       )
+  //   })
+  //   return promise
+  // }
 
 
 }

@@ -24,27 +24,6 @@ export class LoginComponent implements OnInit {
     password: new FormControl('')
   })
 
-
-  // Login(): void {
-  //   console.log(`Tasks: ${this.loginForm.value}`);
-  //   const { username, password } = this.loginForm.value
-
-  //   const login: Login = {
-  //     username,
-  //     password
-  //   }
-
-  //   this.outputTask.emit(login)
-  //   this.loginService.setTasks(login)
-  //     .then(() => this.loginService.getTasks())
-  //     .then((tasks) => {
-  //       console.log(tasks)
-  //       sessionStorage.setItem('USER-DATA', JSON.stringify(tasks))
-  //     }
-  //     )
-  // }
-
-
   submitForm(): void {
     if(this.form.valid){
       const credentials = this.form.value
@@ -53,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.loginService.login({
         username: credentials.username,
         password: credentials.password
-      }).then((response:any) =>{
+      }).subscribe((response:any) =>{
         if (response) {
           sessionStorage.setItem('credentials', response.token);
           sessionStorage.setItem('id', response.id);
