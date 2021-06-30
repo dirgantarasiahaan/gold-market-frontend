@@ -15,53 +15,117 @@ export class ProductsService {
     private readonly http: HttpClient
   ) { }
 
-
-  getAll(customerId: string): Observable<Products[]> {
-    return this.http
-    .get<Products[]>(`http://localhost:8888/customer/${customerId}/pockets`)
-      .pipe(retry(5));
+  addPocket(payload:Products){
+    let promise = new Promise<void>((resolve, rejects) => {
+      let apiUrl = `http://localhost:8888/pocket`
+      this.http.post(apiUrl, payload)
+      .toPromise()
+      .then(
+        (response:any) => {
+          resolve(response);
+        }, error => {
+          rejects(error);
+        }
+      )
+    })
+    return promise
   }
 
-  addPocket(payload: Products): Observable<Products> {
-    return this.http
-    .post<Products>(`http://localhost:8888/pocket`, payload)
-      .pipe(retry(5));
+  getPocketByCustIdProdId(custId: string, prodId: string){
+    let promise = new Promise<void>((resolve, rejects) => {
+      let apiUrl = `http://localhost:8888/customer/${custId}/product/${prodId}/pockets`
+      this.http.get(apiUrl)
+      .toPromise()
+      .then(
+        (response:any) => {
+          resolve(response);
+        }, error => {
+          rejects(error);
+        }
+      )
+    })
+    return promise
   }
 
-  getPocketByCustIdProdId(custId: string, prodId: string): Observable<Products[]>{
-    return this.http
-      .get<Products[]>(`http://localhost:8888/customer/${custId}/product/${prodId}/pockets`)
-      .pipe(retry(5))
+  getProductsByCustomerId(customerId: string){
+    let promise = new Promise<void>((resolve, rejects) => {
+      let apiUrl = `http://localhost:8888/customer/${customerId}/products`
+      this.http.get(apiUrl)
+      .toPromise()
+      .then(
+        (response:any) => {
+          resolve(response);
+        }, error => {
+          rejects(error);
+        }
+      )
+    })
+    return promise
   }
 
-  getProductsByCustomerId(customerId: string): Observable<Product[]> {
-    return this.http
-    .get<Product[]>(`http://localhost:8888/customer/${customerId}/products`)
-    .pipe(retry(5));
+
+  deletePocket(pocketId: string){
+    let promise = new Promise<void>((resolve, rejects) => {
+      let apiUrl = `http://localhost:8888/pocket/${pocketId}`
+      this.http.delete(apiUrl)
+      .toPromise()
+      .then(
+        (response:any) => {
+          resolve(response);
+        }, error => {
+          rejects(error);
+        }
+      )
+    })
+    return promise
   }
 
-  deletePocket(pocketId: string): Observable<any>{
-    return this.http
-      .delete<any>(`http://localhost:8888/pocket/${pocketId}`)
-      .pipe(retry(5))
+  getPocketById(pocketId: string){
+    let promise = new Promise<void>((resolve, rejects) => {
+      let apiUrl = `http://localhost:8888/pocket/${pocketId}`
+      this.http.get(apiUrl)
+      .toPromise()
+      .then(
+        (response:any) => {
+          resolve(response);
+        }, error => {
+          rejects(error);
+        }
+      )
+    })
+    return promise
   }
 
-  getPocketById(pocketId: string): Observable<any>{
-    return this.http
-      .get<any>(`http://localhost:8888/pocket/${pocketId}`)
-      .pipe(retry(5))
+  updatePocketById(payload: Products){
+    let promise = new Promise<void>((resolve, rejects) => {
+      let apiUrl = `http://localhost:8888/pocket`
+      this.http.put(apiUrl, payload)
+      .toPromise()
+      .then(
+        (response:any) => {
+          resolve(response);
+        }, error => {
+          rejects(error);
+        }
+      )
+    })
+    return promise
   }
 
-  updatePocketById(payload: Products): Observable<any>{
-    return this.http
-      .put(`http://localhost:8888/pocket`, payload)
-      .pipe(retry(5))
-  }
-
-  getProductHistoryPrice(productId: string): Observable<HistoryPrice[]> {
-    return this.http
-      .get<HistoryPrice[]>(`http://localhost:8888/product/${productId}/history`)
-      .pipe(retry(5))
+  getProductHistoryPrice(productId: string){
+    let promise = new Promise<void>((resolve, rejects) => {
+      let apiUrl = `http://localhost:8888/product/${productId}/history`
+      this.http.get(apiUrl)
+      .toPromise()
+      .then(
+        (response:any) => {
+          resolve(response);
+        }, error => {
+          rejects(error);
+        }
+      )
+    })
+    return promise
   }
 
 }

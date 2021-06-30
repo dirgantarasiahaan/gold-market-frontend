@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getAllProductCustomer(){
-    this.productService.getProductsByCustomerId(this.customerId).subscribe((response) => {
+    this.productService.getProductsByCustomerId(this.customerId).then((response:any) => {
       this.products = response
       console.log(this.products);
     })

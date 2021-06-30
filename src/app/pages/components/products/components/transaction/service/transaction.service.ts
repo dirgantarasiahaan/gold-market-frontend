@@ -13,11 +13,24 @@ export class TransactionService {
     private readonly http: HttpClient
   ) { }
 
-  purchase(customerId: string, payload: PurchaseDetail): Observable<any> {
-    return this.http
-      .post<any>(`http://localhost:8888/customer/${customerId}/purchases`, payload)
-      .pipe();
+
+  purchase(customerId: string, payload: PurchaseDetail){
+    let promise = new Promise<void>((resolve, rejects) => {
+      let apiUrl = `http://localhost:8888/customer/${customerId}/purchases`
+      this.http.post(apiUrl, payload)
+      .toPromise()
+      .then(
+        (response:any) => {
+          resolve(response);
+        }, error => {
+          rejects(error);
+        }
+      )
+    })
+    return promise
   }
+
+
 
 }
 

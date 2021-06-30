@@ -20,7 +20,7 @@ export class SellChartComponent implements OnInit {
   }
 
   getProductHistoryPrice(productId: string){
-    this.productsService.getProductHistoryPrice(productId).subscribe((response) => {
+    this.productsService.getProductHistoryPrice(productId).then((response:any) => {
         this.prices = response
     })
   }

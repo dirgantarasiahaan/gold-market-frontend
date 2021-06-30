@@ -62,13 +62,13 @@ export class TransactionComponent implements OnInit {
         }
       ]
     }
-    this.transactionService.purchase(this.customerId, this.purchaseDetail).subscribe((response) => {
+    this.transactionService.purchase(this.customerId, this.purchaseDetail).then((response) => {
       alert('Congratulation Success Transaction!')
     })
   }
 
   getPocketByCustIdProdId(productId: string){
-    this.productsService.getPocketByCustIdProdId(this.customerId, productId).subscribe((response) => {
+    this.productsService.getPocketByCustIdProdId(this.customerId, productId).then((response:any) => {
       this.data = response;
       console.log(this.data);
 

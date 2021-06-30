@@ -48,12 +48,6 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  refresh(customerId:string): void{
-    this.productsService.getAll(customerId).subscribe((response) => {
-      this.data = response;
-    })
-  }
-
   initForm(){
     this.form = new FormGroup({
       pocketName: new FormControl(null, [Validators.required]),
@@ -64,17 +58,17 @@ export class ProductsComponent implements OnInit {
 
   addPocket(): void {
     const products: Products = this.form.value;
-    products.product = { id: '8a68e47278fdeeed0178fdf13eef0002'}
+    products.product = { id: this.productId}
     products.pocketQty = 0.0
     products.customer = { id: this.customerId }
-    this.productsService.addPocket(products).subscribe((response) => {
+    this.productsService.addPocket(products).then((response:any) => {
       alert(`product ${response.pocketName} has been saved`)
       this.ngOnInit()
     })
   }
 
   deletePocket(pocketId: string): void {
-    this.productsService.deletePocket(pocketId).subscribe((response) => {
+    this.productsService.deletePocket(pocketId).then((response) => {
       alert('Success Deleted')
       this.ngOnInit()
     })
@@ -86,9 +80,8 @@ export class ProductsComponent implements OnInit {
     pocket.pocketName = pocket.pocketName
     pocket.pocketQty = this.pocketQty
     pocket.customer = { id: this.customerId }
-    pocket.product = { id: '8a68e47278fdeeed0178fdf13eef0002'}
-    this.productsService.updatePocketById(pocket).subscribe((response) => {
-
+    pocket.product = { id: this.productId}
+    this.productsService.updatePocketById(pocket).then((response) => {
       alert('success update')
       this.ngOnInit()
     })
@@ -96,7 +89,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getPocketById(pocketId: string){
-    this.productsService.getPocketById(pocketId).subscribe((response) => {
+    this.productsService.getPocketById(pocketId).then((response:any) => {
       this.id = response.id
       this.pocketName = response.pocketName
       this.pocketQty = response.pocketQty
@@ -113,18 +106,12 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-
-
   getPocketByCustIdProdId(productId: string){
-    this.productsService.getPocketByCustIdProdId(this.customerId, productId).subscribe((response) => {
+    this.productsService.getPocketByCustIdProdId(this.customerId, productId).then((response:any) => {
       this.data = response;
       console.log(this.data);
-
     })
-
-
   }
-
 
   changeChart(chart: string){
     if(chart === 'buy'){

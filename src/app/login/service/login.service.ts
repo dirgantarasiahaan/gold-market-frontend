@@ -14,31 +14,9 @@ export class LoginService {
   }
   result:any;
 
-  // async setTasks(task: Login): Promise<void>{
-  //   this.tasks = task;
-
-  //   return new Promise((resolve ) => {
-  //     setTimeout(() => resolve(), 1000)
-  //   });
-  // }
-
-  // async getTasks(): Promise<Login>{
-  //   return new Promise((resolve ) => {
-  //     setTimeout(() => resolve(this.tasks), 1000)
-  //   });
-  // }
-
   constructor(
     private readonly http: HttpClient
   ) { }
-
-  // login(credentials: { username: string, password: string}){
-  //   return this.http.post('http://localhost:8888/login', credentials)
-  //     .pipe(
-  //       retry(3),
-  //       map((response:any) => response)
-  //     );
-  // }
 
   login(credentials: { username: string, password: string}){
     let promise = new Promise<void>((resolve, rejects) => {

@@ -1,0 +1,41 @@
+.size{
+  margin-top: 80px;
+}
+.size1{
+  margin-top: 80px;
+}
+.product{
+  height: 200px;
+  padding: auto 20px;
+  background-color: lightgrey;
+}
+
+.img{
+  width: 200px;
+  margin: auto 10px;
+}
+
+.crd{
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.input.placeholder{
+  text-align: center;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;
+}
+
+:-ms-input-placeholder {
+  text-align: center;
+}
