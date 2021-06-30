@@ -40,21 +40,6 @@ export class LoginService {
       );
   }
 
-  // login(credentials: { username: string, password: string}){
-  //   let promise = new Promise<void>((resolve, rejects) => {
-  //     let apiUrl = `http://localhost:8888/login`
-  //     this.http.post(apiUrl, credentials)
-  //       .toPromise()
-  //       .then(
-  //         (response:any) => {
-  //           resolve(response);
-  //         }, error => {
-  //           rejects(error);
-  //         }
-  //       )
-  //   })
-  //   return promise
-  // }
 
 
 }

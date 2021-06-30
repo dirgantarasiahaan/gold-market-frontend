@@ -1,10 +1,6 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { map } from 'rxjs/operators';
-import { Product } from '../../models/product';
-
 import { Products } from '../../models/products';
 import { ProductsService } from '../../service/products.service';
 
@@ -64,7 +60,7 @@ export class ProductsComponent implements OnInit {
 
   addPocket(): void {
     const products: Products = this.form.value;
-    products.product = { id: '8a68e47278fdeeed0178fdf13eef0002'}
+    products.product = { id: this.productId}
     products.pocketQty = 0.0
     products.customer = { id: this.customerId }
     this.productsService.addPocket(products).subscribe((response) => {
@@ -86,7 +82,7 @@ export class ProductsComponent implements OnInit {
     pocket.pocketName = pocket.pocketName
     pocket.pocketQty = this.pocketQty
     pocket.customer = { id: this.customerId }
-    pocket.product = { id: '8a68e47278fdeeed0178fdf13eef0002'}
+    pocket.product = { id: this.productId}
     this.productsService.updatePocketById(pocket).subscribe((response) => {
 
       alert('success update')
