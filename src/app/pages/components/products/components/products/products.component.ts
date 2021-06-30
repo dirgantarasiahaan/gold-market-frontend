@@ -26,6 +26,8 @@ export class ProductsComponent implements OnInit {
   chartSell: string = 'btn btn-light'
   chartBuy: string = 'btn btn-primary'
   customerId: string = sessionStorage.getItem('id')
+  totalGram: number = 0
+  totalPrice: number = 0
 
 
   constructor(
@@ -116,9 +118,13 @@ export class ProductsComponent implements OnInit {
       this.data = response;
       console.log(this.data);
 
+      if(this.data != null){
+        for(let i=0; i<(this.data).length; i++){
+          this.totalGram += +this.data[i].pocketQty
+          this.totalPrice += +this.data[i].totalAmount
+        }
+      }
     })
-
-
   }
 
 
