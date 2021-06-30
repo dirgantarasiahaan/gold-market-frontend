@@ -3,20 +3,22 @@
   <div class="row">
       <div class="col-md">
           <div class="card" style="width: 800px; height: 90px;">
-              <div class="row mt-2">
+              <form [formGroup]="formTransaction">
+                <div class="row mt-2">
                   <div class="col-md">
                       <p>Value on IDR</p>
-                      <input type="text" placeholder="0" style="border: none;" class="center">
+                      <input type="text" placeholder="0" formControlName="idr" style="border: none;" class="center">
                   </div>
-                  <div class="col-md center">
+                  <div class="col-md">
                       <p>Value on gram</p>
-                      <input type="text" placeholder="0" style="border: none;">
+                      <input type="text" formControlName="valueOnGram" placeholder="0" style="border: none;">
                   </div>
               </div>
+              </form>
           </div>
       </div>
       <div class="col-md">
-          <button type="button" class="btn btn-warning" style="width: 500px;" routerLink="/products/transaction">Next</button>
+          <button (click)="detailItem()" type="button" class="btn btn-warning" style="width: 500px;" routerLink="/products/transaction">Next</button>
           <br>
           <p>With click button above you agree with aur Term and Condition</p>
       </div>

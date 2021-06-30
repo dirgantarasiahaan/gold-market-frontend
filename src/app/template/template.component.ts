@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../pages/components/products/models/product';
 
 @Component({
   selector: 'app-template',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template.component.scss']
 })
 export class TemplateComponent implements OnInit {
+
+  tasks: Product;
 
   constructor() { }
 

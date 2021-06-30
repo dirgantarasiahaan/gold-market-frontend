@@ -22,6 +22,9 @@ export class ProfileComponent implements OnInit {
   logout(): void{
     sessionStorage.removeItem('credentials')
     sessionStorage.removeItem('id')
+    sessionStorage.removeItem('productId')
+    sessionStorage.removeItem('productName')
+    sessionStorage.removeItem('image')
   }
 
 }

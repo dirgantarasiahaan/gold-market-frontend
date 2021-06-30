@@ -6,15 +6,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link text-muted" [routerLink]="['/products/']" [queryParams]="{search: 'platinum', productId: 1}">Platinum</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-muted" [routerLink]="['/products/']" [queryParams]="{search: 'gold', productId: 2}">Gold</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-muted" [routerLink]="['/products/']" [queryParams]="{search: 'silver', productId: 3}">Silver</a>
-          </li>
+          <div *ngFor="let product of products">
+            <li class="nav-item">
+              <a class="nav-link text-muted" [routerLink]="['/products/']" [queryParams]="{search: (product.productName), productId: (product.id)}" (click)="getData(product.id, product.productName, product.productImage)">{{ product.productName }}</a>
+            </li>
+          </div>
         </ul>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">

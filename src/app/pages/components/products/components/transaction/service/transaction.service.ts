@@ -16,7 +16,7 @@ export class TransactionService {
   purchase(customerId: string, payload: PurchaseDetail): Observable<any> {
     return this.http
       .post<any>(`http://localhost:8888/customer/${customerId}/purchases`, payload)
-      .pipe(retry(3));
+      .pipe();
   }
 
 }

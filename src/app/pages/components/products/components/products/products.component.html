@@ -2,7 +2,7 @@
   <div class="col">
       <div class="card product">
           <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-4" style="justify-content: center;">
                   <img src="{{ product }}" class="img">
               </div>
               <div class="col-md-8">
@@ -52,7 +52,7 @@
 
         <div class="me-2">
             <a data-bs-toggle="modal" (click)="getPocketById(item.id)" data-bs-target="#exampleModal1"><img src="../../../../../../assets/pen.png" alt="pen" style="width: 15px;"></a>
-            <div class="col-md mt-5">
+            <div class="col-md">
               <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                       <div class="modal-content">
@@ -64,7 +64,7 @@
                               <form [formGroup]="form">
                                   <div class="mb-3">
                                       <label for="recipient-name" class="col-form-label">Pocket name:</label>
-                                      <input  formControlName="pocketName" type="text" placeholder="{{ pocketName }}" class="form-control" id="recipient-name">
+                                      <input  formControlName="pocketName" type="text" value="{{ pocketName }}" class="form-control" id="recipient-name">
                                       <p>Description about your pocket</p>
                                   </div>
                               </form>
@@ -170,8 +170,8 @@
   <div class="card-body">
       <div class="row">
           <div class="col-md">
-              <button type="button" class="{{ chartBuy }}" (click)="changeChart('buy')">Buy Prices</button>
-              <button type="button" class="{{ chartSell }}" (click)="changeChart('sell')">Sell Prices</button>
+              <button type="button" class="{{ chartBuy }} me-2" (click)="changeChart('buy')">Buy Prices</button>
+              <button type="button" class="{{ chartSell }} me-2" (click)="changeChart('sell')">Sell Prices</button>
           </div>
       </div>
   </div>

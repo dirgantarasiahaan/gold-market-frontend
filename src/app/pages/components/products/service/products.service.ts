@@ -19,10 +19,8 @@ export class ProductsService {
   getAll(customerId: string): Observable<Products[]> {
     return this.http
     .get<Products[]>(`http://localhost:8888/customer/${customerId}/pockets`)
-      // .get<any>(`${environment.apiBaseUrl}/premium/courses`)
       .pipe(retry(5));
   }
-
 
   addPocket(payload: Products): Observable<Products> {
     return this.http
@@ -30,6 +28,11 @@ export class ProductsService {
       .pipe(retry(5));
   }
 
+  getPocketByCustIdProdId(custId: string, prodId: string): Observable<Products[]>{
+    return this.http
+      .get<Products[]>(`http://localhost:8888/customer/${custId}/product/${prodId}/pockets`)
+      .pipe(retry(5))
+  }
 
   getProductsByCustomerId(customerId: string): Observable<Product[]> {
     return this.http

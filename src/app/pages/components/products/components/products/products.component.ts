@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Route } from '@angular/compiler/src/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { Product } from '../../models/product';
 
 import { Products } from '../../models/products';
 import { ProductsService } from '../../service/products.service';
@@ -14,10 +17,9 @@ export class ProductsComponent implements OnInit {
 
   form: FormGroup;
   data: any[];
-  customerId: string
-  productId:number;
-  search:string;
-  product: string = ''
+  productId: string = sessionStorage.getItem('productId')
+  search:string = sessionStorage.getItem('productName')
+  product: string
   title: string = ''
   pocket: Products;
   pocketName: string
@@ -27,6 +29,8 @@ export class ProductsComponent implements OnInit {
   buy: string = 'active'
   chartSell: string = 'btn btn-light'
   chartBuy: string = 'btn btn-primary'
+  customerId: string = sessionStorage.getItem('id')
+
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -36,30 +40,13 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((queryParams: Params) => {
-      this.search = queryParams.search || 'platinum'
-      this.productId = queryParams.productId || 1;
-
-      this.customerId = sessionStorage.getItem('id');
-
-      if(this.search == 'gold' && this.productId == 2){
-        this.product = '../../../../../../assets/2.png'
-        this.title = 'Gold'
-
-      } else if(this.search == 'platinum' && this.productId == 1){
-        this.product = '../../../../../../assets/1.png'
-        this.title = 'Platinum'
-      } else {
-        this.product = '../../../../../../assets/3.png'
-        this.title = 'Silver'
-      }
-      this.refresh(this.customerId);
-      
+      this.search = queryParams.search || ''
+      this.productId = queryParams.productId || 0;
+      this.getPocketByCustIdProdId(this.productId)
+      this.product = '../../../../../../assets/2.png'
       this.initForm();
-
     })
   }
-
-
 
   refresh(customerId:string): void{
     this.productsService.getAll(customerId).subscribe((response) => {
@@ -79,7 +66,7 @@ export class ProductsComponent implements OnInit {
     const products: Products = this.form.value;
     products.product = { id: '8a68e47278fdeeed0178fdf13eef0002'}
     products.pocketQty = 0.0
-    products.customer = { id: sessionStorage.getItem('id')}
+    products.customer = { id: this.customerId }
     this.productsService.addPocket(products).subscribe((response) => {
       alert(`product ${response.pocketName} has been saved`)
       this.ngOnInit()
@@ -98,7 +85,7 @@ export class ProductsComponent implements OnInit {
     pocket.id = this.id
     pocket.pocketName = pocket.pocketName
     pocket.pocketQty = this.pocketQty
-    pocket.customer = { id: sessionStorage.getItem('id')}
+    pocket.customer = { id: this.customerId }
     pocket.product = { id: '8a68e47278fdeeed0178fdf13eef0002'}
     this.productsService.updatePocketById(pocket).subscribe((response) => {
 
@@ -124,6 +111,18 @@ export class ProductsComponent implements OnInit {
       this.buy = ''
         this.sell = 'active'
     }
+  }
+
+
+
+  getPocketByCustIdProdId(productId: string){
+    this.productsService.getPocketByCustIdProdId(this.customerId, productId).subscribe((response) => {
+      this.data = response;
+      console.log(this.data);
+
+    })
+
+
   }
 
 

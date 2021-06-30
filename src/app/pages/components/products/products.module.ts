@@ -10,6 +10,8 @@ import { BuyChartComponent } from './components/buy-chart/buy-chart.component';
 import { SellChartComponent } from './components/sell-chart/sell-chart.component';
 
 
+
+
 @NgModule({
   declarations: [
     ProductsComponent,
@@ -23,7 +25,8 @@ import { SellChartComponent } from './components/sell-chart/sell-chart.component
     ProductsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    TransactionModule
+    TransactionModule,
+
   ],
   exports: [
     ProductsComponent

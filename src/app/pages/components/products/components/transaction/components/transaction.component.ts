@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ProductsService } from '../../../service/products.service';
 import { PurchaseDetail } from '../models/purchase-detail';
 import { TransactionService } from '../service/transaction.service';
 
@@ -9,36 +13,64 @@ import { TransactionService } from '../service/transaction.service';
 })
 export class TransactionComponent implements OnInit {
 
-  purchaseDetail: any = {
-    purchaseType : '1',
-    purchaseDetails: [
-      {
-        quantityInGram: '1',
-        pocket: {
-          id: '4028e4907912fcd6017912ff68440001'
-        }
-      }
-    ]
-  }
+  pocketId:string
+  form: FormGroup
+  data : any[]
+  customerId: string = sessionStorage.getItem('id')
+  purchaseType: string = this.route.snapshot.paramMap.get('purchaseType')
+  quantityInGram: number = +this.route.snapshot.paramMap.get('quantityInGram')
+  productId: string = sessionStorage.getItem('productId')
+  price: number = +this.route.snapshot.paramMap.get('price')
+  purchaseDetail: any
+  total : number
+
 
   constructor(
-    private readonly transactionService: TransactionService
+    private readonly transactionService: TransactionService,
+    private readonly productsService: ProductsService,
+    private readonly route: ActivatedRoute,
+    private fb:FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.purchase('8a68e47278f8d7b30178f8d865960001', this.purchaseDetail)
+    this.form = this.fb.group({
+      pockets: [null]
+    });
+    this.getPocketByCustIdProdId(this.productId)
+    console.log(this.pocketId);
+    this.total = this.quantityInGram*this.price
+
   }
 
-  purchase(customerId: string, payload: PurchaseDetail){
+  submit() {
+    console.log("Form Submitted")
+    console.log(this.form.value)
+    console.log(this.pocketId);
 
-    customerId = '8a68e47278f8d7b30178f8d865960001'
-    // payload.purchaseType = '1'
-    // payload.purchaseDetails[0].quantityInGram = '1'
-    // payload.purchaseDetails[0].pocket = { id: '4028e4907912fcd6017912ff68440001' }
+  }
 
-    console.log('Testtttttttt');
-    this.transactionService.purchase(customerId,  this.purchaseDetail).subscribe((response) => {
 
+  purchase(){
+    this.purchaseDetail = {
+      purchaseType : this.purchaseType,
+      purchaseDetails: [
+        {
+          quantityInGram: this.quantityInGram,
+          pocket: {
+            id: this.form.value.pockets
+          }
+        }
+      ]
+    }
+    this.transactionService.purchase(this.customerId, this.purchaseDetail).subscribe((response) => {
+      alert('Congratulation Success Transaction!')
+    })
+  }
+
+  getPocketByCustIdProdId(productId: string){
+    this.productsService.getPocketByCustIdProdId(this.customerId, productId).subscribe((response) => {
+      this.data = response;
+      console.log(this.data);
 
     })
   }
