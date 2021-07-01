@@ -12,10 +12,10 @@
         <h3>Sign In</h3>
       <form [formGroup] = "form" (ngSubmit)="submitForm()">
         <div class="mb-3">
-          <input type="text" formControlName='username' placeholder="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" formControlName='username' name="label" placeholder="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
-          <input type="password" formControlName='password' placeholder="password" class="form-control" id="exampleInputPassword1">
+          <input type="password" formControlName='password' name="label" placeholder="password" class="form-control" id="exampleInputPassword1">
         </div>
         <button type="submit" class="btn btn-warning">Login</button>
         <div class="mt-3">

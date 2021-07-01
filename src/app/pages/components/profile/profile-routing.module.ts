@@ -6,9 +6,11 @@ const routes: Routes = [
   {
       path: '',
       component: ProfileComponent,
+      pathMatch: 'full',
       children: [
           {
               path: '',
+              pathMatch: 'full',
               loadChildren: () => import('./components/profile/components/my-profile/my-profile.module')
               .then((m) => m.MyProfileModule)
           },

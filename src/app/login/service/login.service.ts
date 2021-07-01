@@ -12,22 +12,8 @@ export class LoginService {
     username: '',
     password: ''
   }
+
   result:any;
-
-  // async setTasks(task: Login): Promise<void>{
-  //   this.tasks = task;
-
-  //   return new Promise((resolve ) => {
-  //     setTimeout(() => resolve(), 1000)
-  //   });
-  // }
-
-  // async getTasks(): Promise<Login>{
-  //   return new Promise((resolve ) => {
-  //     setTimeout(() => resolve(this.tasks), 1000)
-  //   });
-  // }
-
   constructor(
     private readonly http: HttpClient
   ) { }

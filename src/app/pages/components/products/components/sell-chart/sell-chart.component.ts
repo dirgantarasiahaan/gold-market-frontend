@@ -10,13 +10,14 @@ import { ProductsService } from '../../service/products.service';
 export class SellChartComponent implements OnInit {
 
   prices: HistoryPrice[];
+  productId: string = sessionStorage.getItem('productId')
 
   constructor(
     private readonly productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
-    this.getProductHistoryPrice('8a68e47278fdeeed0178fdf13eef0002')
+    this.getProductHistoryPrice(this.productId)
   }
 
   getProductHistoryPrice(productId: string){
@@ -24,5 +25,4 @@ export class SellChartComponent implements OnInit {
         this.prices = response
     })
   }
-
 }

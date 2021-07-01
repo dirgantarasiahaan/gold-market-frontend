@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { PagesComponent } from './pages.component';
 
 describe('PagesComponent', () => {
@@ -8,7 +8,10 @@ describe('PagesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PagesComponent ]
+      declarations: [ PagesComponent ],
+      imports: [
+        RouterTestingModule.withRoutes([])
+      ]
     })
     .compileComponents();
   });

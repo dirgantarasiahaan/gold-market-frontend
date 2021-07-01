@@ -10,8 +10,7 @@ const DIRECTIVES = [NavbarDirective]
 @NgModule({
   declarations: [
     ...DIRECTIVES,
-    ...PIPES,
-    CamelCasePipe
+    ...PIPES
   ],
   imports: [
     CommonModule

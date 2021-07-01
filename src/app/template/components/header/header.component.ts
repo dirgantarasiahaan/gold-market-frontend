@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, UrlSerializer } from '@angular/router';
 import { Product } from 'src/app/pages/components/products/models/product';
 import { ProductsService } from 'src/app/pages/components/products/service/products.service';

@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl('')
+    username: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)])
   })
 
   submitForm(): void {

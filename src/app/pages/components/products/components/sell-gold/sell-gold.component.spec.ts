@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { SellGoldComponent } from './sell-gold.component';
 
@@ -8,7 +10,8 @@ describe('SellGoldComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SellGoldComponent ]
+      declarations: [ SellGoldComponent ],
+      imports: [FormsModule, ReactiveFormsModule, RouterTestingModule]
     })
     .compileComponents();
   });
