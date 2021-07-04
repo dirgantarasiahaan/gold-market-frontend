@@ -1,26 +1,27 @@
 <div class="row">
   <h5>{{title}}</h5>
   <div class="container-fluid">
-    <div class="card c3" *ngFor="let transaction of transactions" >
+    <div class="card c3" *ngFor="let history of historyPuchases" >
       <div class="row" >
           <div class="col-md">
-              <h6>{{transaction.method}}</h6>
+              <h6 *ngIf="(history.purchaseType)==1">Sell</h6>
+              <h6 *ngIf="(history.purchaseType)==0">Buy</h6>
           </div>
           <div class="col-md jc">
-              <h6>{{transaction.date}}</h6>
+              <h6>{{history.purchaseDate | relativeDate}}</h6>
           </div>
       </div>
       <div class="row mt-2">
           <h6>{{subtitle}}</h6>
       </div>
       <div class="row" >
-          <div class="col-md">
-              <p>Product Name: {{transaction.productname}}</p>
-              <p>Quantity: {{transaction.quantity}}</p>
+          <div class="col-md" *ngFor="let subItem of history['purchaseDetails']">
+              <p>Product Name: {{ subItem.pocket.product.productName }}</p>
+              <p>Quantity: {{ subItem.quantityInGram }} gram</p>
           </div>
-          <div class="col-md jc">
+          <div class="col-md jc" *ngFor="let subItem of history['purchaseDetails']">
               <p>Total Price</p>
-              <h6>{{transaction.price}}</h6>
+              <h6>{{ subItem.price * subItem.quantityInGram}}</h6>
               <button type="button" class="btn btn-success">DETAIL</button>
           </div>
       </div>
@@ -29,16 +30,5 @@
   </div>
 </div>
 
-<!-- purchaseDate
-purchaseType
-purchaseDetails ; [
-  price * quantity
-
-  pocket : {
-    product: {
-      productname
-    }
-  }
-] -->
 
 
