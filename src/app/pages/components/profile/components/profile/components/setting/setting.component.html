@@ -1,3 +1,102 @@
-<div class="row">
-  <h5>{{title}}</h5>
-</div>
+<div class="container">
+  <div class="main-body">
+    <h5>{{title}}</h5>
+        <div class="row gutters-sm">
+          <div class="col-md-8">
+            <div class="card mb-3">
+              <form [formGroup]="form">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Firstname</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" value="{{ firstName }}" formControlName="firstName">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Lastname</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" value="{{ lastName }}" formControlName="lastname">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Username</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" value="{{ username }}" formControlName="username">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Password</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" value="{{ password }}" formControlName="password">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" value="{{ email }}" formControlName="email">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Status</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" value="{{ status }}" formControlName="status">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" value="{{ phone }}" formControlName="phone">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Birth Date</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" value="{{ birthDate }}" formControlName="birthDate">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" value="{{ address }}" formControlName="address">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <a class="btn btn-info " target="__blank" (click)="editUserByCustId()">Edit</a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </div>

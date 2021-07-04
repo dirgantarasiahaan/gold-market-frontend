@@ -19,5 +19,11 @@ export class TransactionService {
       .pipe();
   }
 
+  historyPurchases(customerId: string): Observable<any> {
+    return this.http
+      .get(`http://localhost:8888/customer/${customerId}/purchases`)
+      .pipe(retry(3))
+  }
+
 }
 

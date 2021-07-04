@@ -11,13 +11,16 @@ export class BuyChartComponent implements OnInit {
 
   prices: HistoryPrice[];
   no: number = 0
+  productId: string = sessionStorage.getItem('productId')
 
   constructor(
     private readonly productsService: ProductsService
   ) { }
 
+
+
   ngOnInit(): void {
-    this.getProductHistoryPrice('8a68e47278fdeeed0178fdf13eef0002')
+    this.getProductHistoryPrice(this.productId)
   }
 
   getProductHistoryPrice(productId: string){
@@ -25,13 +28,5 @@ export class BuyChartComponent implements OnInit {
         this.prices = response
     })
   }
-
-  increment(){
-    this.no++;
-    console.log(this.no++);
-
-  }
-
-
 
 }

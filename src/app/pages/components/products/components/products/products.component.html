@@ -9,7 +9,7 @@
                   <div class="row">
                       <div class="col-6 mt-5">
                           <p>Your {{ title }} Amount</p>
-                          <h4> Rp. {{ totalPrice }}</h4>
+                          <h4>{{ totalPrice | currency: 'IDR' }}</h4>
                           <p>{{ title }} Amount : {{totalGram}} Gram</p>
                       </div>
                   </div>
@@ -86,7 +86,7 @@
         <div class="row" ><br></div>
         <div class="card-body">
             <h6 class="card-title">{{ item.pocketName }}</h6>
-            <h4 class="text-muted">Rp.{{ item.totalAmount }}</h4>
+            <h4 class="text-muted">{{ item.totalAmount | currency: 'IDR' }}</h4>
             <p class="card-text">{{ item.pocketQty }} gram</p>
         </div>
     </div>

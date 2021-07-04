@@ -1,6 +1,7 @@
 <div class="row">
   <h5>{{title}}</h5>
-  <div class="card c3" *ngFor="let transaction of transactions" >
+  <div class="container-fluid">
+    <div class="card c3" *ngFor="let transaction of transactions" >
       <div class="row" >
           <div class="col-md">
               <h6>{{transaction.method}}</h6>
@@ -20,8 +21,24 @@
           <div class="col-md jc">
               <p>Total Price</p>
               <h6>{{transaction.price}}</h6>
-              <button type="button" class="btn btn-success" routerLink="/detailtransaction">DETAIL</button>
+              <button type="button" class="btn btn-success">DETAIL</button>
           </div>
       </div>
   </div>
+
+  </div>
 </div>
+
+<!-- purchaseDate
+purchaseType
+purchaseDetails ; [
+  price * quantity
+
+  pocket : {
+    product: {
+      productname
+    }
+  }
+] -->
+
+

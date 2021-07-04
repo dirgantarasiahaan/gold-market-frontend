@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionModule } from './components/transaction/transaction.module';
 import { BuyChartComponent } from './components/buy-chart/buy-chart.component';
 import { SellChartComponent } from './components/sell-chart/sell-chart.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -26,6 +27,7 @@ import { SellChartComponent } from './components/sell-chart/sell-chart.component
     FormsModule,
     ReactiveFormsModule,
     TransactionModule,
+    SharedModule
 
   ],
   exports: [

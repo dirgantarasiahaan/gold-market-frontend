@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../service/products.service';
-import { PurchaseDetail } from '../models/purchase-detail';
 import { TransactionService } from '../service/transaction.service';
 
 @Component({

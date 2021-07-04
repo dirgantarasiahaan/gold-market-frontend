@@ -8,24 +8,16 @@ import { map, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LoginService {
-  tasks: Login = {
-    username: '',
-    password: ''
-  }
 
-  result:any;
   constructor(
     private readonly http: HttpClient
   ) { }
 
-  login(credentials: { username: string, password: string}){
+  login(credentials: { username: string, password: string}): Observable<any>{
     return this.http.post('http://localhost:8888/login', credentials)
       .pipe(
         retry(3),
         map((response:any) => response)
       );
   }
-
-
-
 }

@@ -6,11 +6,11 @@
                 <div class="row mt-2">
                   <div class="col-md">
                       <p>Value on IDR</p>
-                      <input type="text" placeholder="0" formControlName="idr" style="border: none;" class="center">
+                      <input type="text" value="Rp. {{currentPrice | currency: 'IDR'}}" formControlName="idr" style="border: none; text-align: center;" class="center">
                   </div>
                   <div class="col-md">
                       <p>Value on gram</p>
-                      <input type="text" formControlName="valueOnGram" placeholder="0" style="border: none;">
+                      <input type="text" formControlName="valueOnGram" placeholder="0" style="border: none; text-align: center;">
                   </div>
               </div>
               </form>

@@ -3,15 +3,15 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">No</th>
-        <th scope="col">Price Buy</th>
+        <th scope="col">Price Sell</th>
         <th scope="col">Date</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let price of prices; let i = index">
         <th scope="row">{{ i+1 }}</th>
-        <td>{{ price.priceSell }}</td>
-        <td>{{ price.historyDate }}</td>
+        <td>{{ price.priceSell | currency: 'IDR'}}</td>
+        <td>{{ price.historyDate | relativeDate }}</td>
       </tr>
     </tbody>
   </table>
