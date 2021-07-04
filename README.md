@@ -1,5 +1,5 @@
 # ChallengeAngular-Component
-How to implement unit-testing in project
+How to implement observable in project
 
 1. clone this project using comment below:
 ```clone
@@ -21,7 +21,8 @@ ng serve --open
 
 ### Images Desktop
 <p align="col">
-![Screenshoot](/images/unit-testing.png)
+![Screenshoot](/images/product.png)
+![Screenshoot](/images/transaction.png)
 </p>
 
 
