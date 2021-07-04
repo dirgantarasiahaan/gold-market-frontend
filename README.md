@@ -1,5 +1,5 @@
 # ChallengeAngular-Component
-How to implement Pipes in project
+How to implement unit-testing in project
 
 1. clone this project using comment below:
 ```clone
@@ -21,9 +21,7 @@ ng serve --open
 
 ### Images Desktop
 <p align="col">
-![Screenshoot](/images/corousel.png)
-![Screenshoot](/images/register.png)
-![Screenshoot](/images/products.png)
+![Screenshoot](/images/unit-testing.png)
 </p>
 
 
