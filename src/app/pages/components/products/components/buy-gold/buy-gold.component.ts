@@ -58,7 +58,7 @@ export class BuyGoldComponent implements OnInit {
   getProductHistoryPrice(productId: string){
     this.productsService.getProductHistoryPrice(productId).subscribe((response) => {
         this.prices = response
-        this.currentPrice = response[response.length - 1].priceSell;
+        this.currentPrice = response[response.length - 1].priceBuy;
     })
   }
 

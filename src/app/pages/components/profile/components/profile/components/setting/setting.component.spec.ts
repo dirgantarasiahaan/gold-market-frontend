@@ -4,6 +4,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SettingRoutingModule } from './setting-routing.module';
 import { Location } from "@angular/common"
 import { SettingComponent } from './setting.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ProfileService } from '../template-profile/services/profile.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('SettingComponent', () => {
   let component: SettingComponent;
@@ -14,7 +17,10 @@ describe('SettingComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SettingComponent ],
-      imports: [RouterTestingModule.withRoutes([]), SettingRoutingModule],
+      imports: [RouterTestingModule.withRoutes([]), SettingRoutingModule, HttpClientTestingModule,
+      FormsModule,
+      ReactiveFormsModule],
+      providers: [ProfileService]
     })
     .compileComponents();
 

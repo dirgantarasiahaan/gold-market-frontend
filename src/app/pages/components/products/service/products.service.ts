@@ -15,13 +15,6 @@ export class ProductsService {
     private readonly http: HttpClient
   ) { }
 
-
-  getAll(customerId: string): Observable<Products[]> {
-    return this.http
-    .get<Products[]>(`http://localhost:8888/customer/${customerId}/pockets`)
-      .pipe(retry(5));
-  }
-
   addPocket(payload: Products): Observable<Products> {
     return this.http
     .post<Products>(`http://localhost:8888/pocket`, payload)

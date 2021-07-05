@@ -46,12 +46,6 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  refresh(customerId:string): void{
-    this.productsService.getAll(customerId).subscribe((response) => {
-      this.data = response;
-    })
-  }
-
   initForm(){
     this.form = new FormGroup({
       pocketName: new FormControl(null, [Validators.required]),
@@ -86,11 +80,9 @@ export class ProductsComponent implements OnInit {
     pocket.customer = { id: this.customerId }
     pocket.product = { id: this.productId}
     this.productsService.updatePocketById(pocket).subscribe((response) => {
-
       alert('success update')
       this.ngOnInit()
     })
-
   }
 
   getPocketById(pocketId: string){
@@ -110,8 +102,6 @@ export class ProductsComponent implements OnInit {
         this.sell = 'active'
     }
   }
-
-
 
   getPocketByCustIdProdId(productId: string){
     this.productsService.getPocketByCustIdProdId(this.customerId, productId).subscribe((response) => {

@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ProfileService } from '../template-profile/services/profile.service';
 
 import { MyProfileComponent } from './my-profile.component';
 
@@ -8,7 +11,9 @@ describe('MyProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MyProfileComponent ]
+      declarations: [ MyProfileComponent ],
+      imports: [HttpClientTestingModule, SharedModule],
+      providers: [ProfileService]
     })
     .compileComponents();
   });

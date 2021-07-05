@@ -4,6 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ProfileRoutingModule } from '../../../../profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { Location } from "@angular/common"
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ProfileService } from './services/profile.service';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -14,7 +16,8 @@ describe('ProfileComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ProfileComponent ],
-      imports: [RouterTestingModule, RouterTestingModule.withRoutes([]), ProfileRoutingModule]
+      imports: [RouterTestingModule, RouterTestingModule.withRoutes([]), ProfileRoutingModule, HttpClientTestingModule],
+      providers: [ProfileService]
     })
     .compileComponents();
 
@@ -27,7 +30,7 @@ describe('ProfileComponent', () => {
   it('navigate to "" redirect you to /profile', fakeAsync(() => {
     router.navigate([""]).then(() => {
         tick(50);
-        expect(location.path()).toBe('/profile')
+        expect(location.path()).toBe('/')
     })
 }))
 

@@ -1,6 +1,7 @@
 import { getTestBed, inject, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing"
 import { TransactionService } from './transaction.service';
+import { PurchaseDetail } from '../models/purchase-detail';
 
 describe('TransactionService', () => {
   let service: TransactionService;
@@ -585,7 +586,24 @@ describe('TransactionService', () => {
       })
     })
 
+    it('#transaction api', () => {
+      const customerId: string = '8a68e47278f8d7b30178f8d865960001'
+      const payload: any = {
+        purchaseType: 0,
+        purchaseDetails: [
+            {
+            quantityInGram: 1,
+            pocket: {
+              id: '4028e4907912fcd601791307c9840007'
+            }
+          }
+        ]
+      }
+      expect(service.purchase(customerId, payload)).toBeDefined();
+    });
 
-
-
+    it('#history api', () => {
+      const customerId: string = '8a68e47278f8d7b30178f8d865960001'
+      expect(service.historyPurchases(customerId,)).toBeDefined();
+    });
 });

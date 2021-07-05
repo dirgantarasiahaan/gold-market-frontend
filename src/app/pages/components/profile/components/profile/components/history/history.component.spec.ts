@@ -5,6 +5,8 @@ import { HistoryRoutingModule } from './history-routing.module';
 import { Location } from "@angular/common"
 
 import { HistoryComponent } from './history.component';
+import { TransactionService } from 'src/app/pages/components/products/components/transaction/service/transaction.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HistoryComponent', () => {
   let component: HistoryComponent;
@@ -15,7 +17,8 @@ describe('HistoryComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ HistoryComponent ],
-      imports: [RouterTestingModule.withRoutes([]), HistoryRoutingModule],
+      imports: [RouterTestingModule.withRoutes([]), HistoryRoutingModule, HttpClientTestingModule],
+      providers: [TransactionService]
     })
     .compileComponents();
 
