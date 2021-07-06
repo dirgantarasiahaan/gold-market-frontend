@@ -7,6 +7,9 @@ import { Location } from "@angular/common"
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from '../login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LoginService } from '../service/login.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -74,3 +77,45 @@ describe('#ReactiveForm', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+describe('LoginComponent()', () => {
+  let fixture: ComponentFixture<LoginComponent>
+  let component: LoginComponent;
+  let element: HTMLElement;
+  let element1: HTMLElement;
+  let element2: HTMLElement;
+
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [LoginComponent],
+      imports: [SharedModule, HttpClientTestingModule, RouterTestingModule],
+      providers: [LoginService]
+    });
+
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
+    element = fixture.nativeElement.querySelector('h3')
+    element1 = fixture.nativeElement.querySelector('p')
+    element2 = fixture.nativeElement.querySelector('button')
+  })
+
+  it('should display original title', () => {
+    fixture.detectChanges();
+    expect(element.textContent).toEqual("Don't have and Account")
+  })
+  it('should display paragraph', () => {
+    fixture.detectChanges();
+    expect(element1.textContent).toEqual("Let us help you register with pleasure.")
+  })
+  it('should display button', () => {
+    fixture.detectChanges();
+    expect(element2.textContent).toEqual("Register")
+  })
+
+  
+
+
+
+})

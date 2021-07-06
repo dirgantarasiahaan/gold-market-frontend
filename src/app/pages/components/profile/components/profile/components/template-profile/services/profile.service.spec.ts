@@ -36,7 +36,6 @@ describe('ProfileService', () => {
      password: 'test',
      email: 'test',
      phoneNumber: 'test'
-
     }
     expect(service.updateUserById(customer)).toBeTruthy();
   });
