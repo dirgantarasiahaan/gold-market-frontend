@@ -13,17 +13,18 @@ export class ProfileService {
     private readonly http: HttpClient
   ) { }
 
+  BASE_URL = 'http://localhost:8888'
 
   getUserById(customerId: string): Observable<any> {
     return this.http
-    .get(`http://localhost:8888/customer/${customerId}`)
+    .get(`${this.BASE_URL}/customer/${customerId}`)
     .pipe(retry(5))
   }
 
 
   updateUserById(payload: Customer): Observable<Customer> {
     return this.http
-    .put<Customer>(`http://localhost:8888/customer`, payload)
+    .put<Customer>(`${this.BASE_URL}/customer`, payload)
     .pipe(retry(5))
   }
 }

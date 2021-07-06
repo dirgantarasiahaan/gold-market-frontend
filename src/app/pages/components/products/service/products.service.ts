@@ -15,45 +15,47 @@ export class ProductsService {
     private readonly http: HttpClient
   ) { }
 
+  BASE_URL = 'http://localhost:8888'
+
   addPocket(payload: Products): Observable<Products> {
     return this.http
-    .post<Products>(`http://localhost:8888/pocket`, payload)
+    .post<Products>(`${this.BASE_URL}/pocket`, payload)
       .pipe(retry(5));
   }
 
   getPocketByCustIdProdId(custId: string, prodId: string): Observable<Products[]>{
     return this.http
-      .get<Products[]>(`http://localhost:8888/customer/${custId}/product/${prodId}/pockets`)
+      .get<Products[]>(`${this.BASE_URL}/customer/${custId}/product/${prodId}/pockets`)
       .pipe(retry(5))
   }
 
   getProductsByCustomerId(customerId: string): Observable<Product[]> {
     return this.http
-    .get<Product[]>(`http://localhost:8888/customer/${customerId}/products`)
+    .get<Product[]>(`${this.BASE_URL}/customer/${customerId}/products`)
     .pipe(retry(5));
   }
 
   deletePocket(pocketId: string): Observable<any>{
     return this.http
-      .delete<any>(`http://localhost:8888/pocket/${pocketId}`)
+      .delete<any>(`${this.BASE_URL}/pocket/${pocketId}`)
       .pipe(retry(5))
   }
 
   getPocketById(pocketId: string): Observable<any>{
     return this.http
-      .get<any>(`http://localhost:8888/pocket/${pocketId}`)
+      .get<any>(`${this.BASE_URL}/pocket/${pocketId}`)
       .pipe(retry(5))
   }
 
   updatePocketById(payload: Products): Observable<any>{
     return this.http
-      .put(`http://localhost:8888/pocket`, payload)
+      .put(`${this.BASE_URL}/pocket`, payload)
       .pipe(retry(5))
   }
 
   getProductHistoryPrice(productId: string): Observable<HistoryPrice[]> {
     return this.http
-      .get<HistoryPrice[]>(`http://localhost:8888/product/${productId}/history`)
+      .get<HistoryPrice[]>(`${this.BASE_URL}/product/${productId}/history`)
       .pipe(retry(5))
   }
 

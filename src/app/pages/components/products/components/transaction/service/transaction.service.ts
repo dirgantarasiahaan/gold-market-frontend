@@ -13,15 +13,17 @@ export class TransactionService {
     private readonly http: HttpClient
   ) { }
 
+  BASE_URL = 'http://localhost:8888'
+
   purchase(customerId: string, payload: PurchaseDetail): Observable<any> {
     return this.http
-      .post<any>(`http://localhost:8888/customer/${customerId}/purchases`, payload)
+      .post<any>(`${this.BASE_URL}/customer/${customerId}/purchases`, payload)
       .pipe();
   }
 
   historyPurchases(customerId: string): Observable<any> {
     return this.http
-      .get(`http://localhost:8888/customer/${customerId}/purchases`)
+      .get(`${this.BASE_URL}/customer/${customerId}/purchases`)
       .pipe(retry(3))
   }
 
