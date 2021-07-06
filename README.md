@@ -1,5 +1,5 @@
 # ChallengeAngular-Component
-How to implement unit-testing in project
+How to deploy project in local using docker-compose and nginx
 
 1. clone this project using comment below:
 ```clone
@@ -21,7 +21,9 @@ ng serve --open
 
 ### Images Desktop
 <p align="col">
-![Screenshoot](/images/unit-testing.png)
+![Screenshoot](/images/login-deploy.png)
+![Screenshoot](/images/home-deploy.png)
+![Screenshoot](/images/profile-deploy.png)
 </p>
 
 
