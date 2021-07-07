@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { PurchaseDetail } from '../models/purchase-detail';
+
+const API_BASE_URL = `${environment.apiBaseUrl}`
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +16,15 @@ export class TransactionService {
     private readonly http: HttpClient
   ) { }
 
-  BASE_URL = 'http://localhost:8888'
-
   purchase(customerId: string, payload: PurchaseDetail): Observable<any> {
     return this.http
-      .post<any>(`${this.BASE_URL}/customer/${customerId}/purchases`, payload)
+      .post<any>(`${API_BASE_URL}/customer/${customerId}/purchases`, payload)
       .pipe();
   }
 
   historyPurchases(customerId: string): Observable<any> {
     return this.http
-      .get(`${this.BASE_URL}/customer/${customerId}/purchases`)
+      .get(`${API_BASE_URL}/customer/${customerId}/purchases`)
       .pipe(retry(3))
   }
 

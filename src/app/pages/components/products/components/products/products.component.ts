@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Product } from '../../models/product';
 import { Products } from '../../models/products';
 import { ProductsService } from '../../service/products.service';
 
@@ -41,7 +42,7 @@ export class ProductsComponent implements OnInit {
       this.search = queryParams.search || ''
       this.productId = queryParams.productId || 0;
       this.getPocketByCustIdProdId(this.productId)
-      this.product = '../../../../../../assets/2.png'
+      this.getProductById(this.productId)
       this.initForm();
     })
   }
@@ -62,14 +63,24 @@ export class ProductsComponent implements OnInit {
     this.productsService.addPocket(products).subscribe((response) => {
       alert(`product ${response.pocketName} has been saved`)
       this.ngOnInit()
-    })
+    },
+    (error) => {
+      const message = error.error;
+      alert(message)
+    }
+    )
   }
 
   deletePocket(pocketId: string): void {
     this.productsService.deletePocket(pocketId).subscribe((response) => {
       alert('Success Deleted')
       this.ngOnInit()
-    })
+    },
+    (error) => {
+      const message = error.error;
+      alert(message)
+    }
+    )
   }
 
   updatePocket(pocketName: string){
@@ -82,7 +93,12 @@ export class ProductsComponent implements OnInit {
     this.productsService.updatePocketById(pocket).subscribe((response) => {
       alert('success update')
       this.ngOnInit()
-    })
+    },
+    (error) => {
+      const message = error.error;
+      alert(message)
+    }
+    )
   }
 
   getPocketById(pocketId: string){
@@ -90,7 +106,12 @@ export class ProductsComponent implements OnInit {
       this.id = response.id
       this.pocketName = response.pocketName
       this.pocketQty = response.pocketQty
-    })
+    },
+    (error) => {
+      const message = error.error;
+      alert(message)
+    }
+    )
   }
 
   changeActive(activeate: string){
@@ -126,5 +147,17 @@ export class ProductsComponent implements OnInit {
       this.chartSell = 'btn btn-primary'
       this.chartBuy = 'btn btn-light'
     }
+  }
+
+  getProductById(productId: string){
+    this.productsService.getProductById(productId).subscribe((response) => {
+      this.product = response.productImage
+      console.log(this.product);
+    },
+    (error) => {
+      const message = error.error;
+      alert(message)
+    }
+    )
   }
 }

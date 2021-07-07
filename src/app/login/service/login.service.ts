@@ -3,20 +3,21 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Login } from '../model/login';
 import { map, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
+const API_BASE_URL = `${environment.apiBaseUrl}`
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  BASE_URL = 'http://localhost:8888'
-
   constructor(
     private readonly http: HttpClient
   ) { }
 
-  login(credentials: { username: string, password: string}): Observable<any>{
-    return this.http.post(`${this.BASE_URL}/login`, credentials)
+  login(credentials: { username: string, password: string}): Observable<Login>{
+    return this.http.post(`${API_BASE_URL}/login`, credentials)
       .pipe(
         retry(3),
         map((response:any) => response)

@@ -19,11 +19,6 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  loginForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(5)])
-  })
-
   submitForm(): void {
     if(this.form.valid){
       const credentials = this.form.value
@@ -48,8 +43,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
+      username: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(5)])
     })
   }
 }
