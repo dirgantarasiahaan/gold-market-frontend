@@ -27,7 +27,6 @@ describe('LoginComponent', () => {
       ]
     })
     .compileComponents();
-
         router = TestBed.inject(Router)
         location = TestBed.inject(Location)
         fixture = TestBed.createComponent(LoginComponent);
@@ -46,7 +45,7 @@ describe('LoginComponent', () => {
 describe('#ReactiveForm', () => {
   it('label field validity', () => {
       let error: any = {};
-      let label = component.loginForm.controls['username']
+      let label = component.form.controls['username']
       expect(label.valid).toBeFalsy();
 
       error = label.errors || {};
@@ -59,9 +58,9 @@ describe('#ReactiveForm', () => {
   });
 
   it('submiting  a form emits a username', () => {
-    expect(component.loginForm.valid).toBeFalsy();
-    component.loginForm.controls['username'].setValue('Travelling')
-    expect(component.loginForm.valid).toBeFalsy();
+    expect(component.form.valid).toBeFalsy();
+    component.form.controls['username'].setValue('dirgaaa')
+    expect(component.form.valid).toBeFalsy();
     component.submitForm();
   })
 
@@ -77,7 +76,6 @@ describe('#ReactiveForm', () => {
     expect(component).toBeTruthy();
   });
 });
-
 
 describe('LoginComponent()', () => {
   let fixture: ComponentFixture<LoginComponent>
@@ -113,9 +111,5 @@ describe('LoginComponent()', () => {
     fixture.detectChanges();
     expect(element2.textContent).toEqual("Register")
   })
-
-  
-
-
 
 })

@@ -11,6 +11,8 @@ describe('RegisterComponent', () => {
   let fixture: ComponentFixture<RegisterComponent>;
   let location: Location
   let router: Router
+  let h4: HTMLElement;
+  let p: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,7 +25,19 @@ describe('RegisterComponent', () => {
         location = TestBed.inject(Location)
         fixture = TestBed.createComponent(RegisterComponent);
         router.initialNavigation();
+        h4 = fixture.nativeElement.querySelector('h4')
+        p = fixture.nativeElement.querySelector('p')
   });
+
+  it('should display h4', () => {
+    fixture.detectChanges();
+    expect(h4.textContent).toEqual("Create Account")
+  })
+
+  it('should display p', () => {
+    fixture.detectChanges();
+    expect(p.textContent).toEqual("Get started with your free account")
+  })
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterComponent);
