@@ -5,6 +5,8 @@ import { RouteGuard } from './route.guard';
 
 describe('RouteGuard', () => {
   let guard: RouteGuard;
+  let routMock: any = { snapshot: {}};
+    let routState: any = { snapshot: {}, url: '/'}
   let router = {
     navigate: jasmine.createSpy('navigate')
 };
@@ -30,5 +32,12 @@ it('be able to hit route when user is logged in', () => {
   expect(guard.canActivateChild).toBeTruthy()
 });
 
+it('should have method canActivete()', ()=>{
+  expect(guard.canActivate(routMock, routState)).toBeTruthy()
+})
+
+it('should have method canActivateChild()', ()=>{
+  expect(guard.canActivateChild(routMock, routState)).toBeTruthy()
+})
 
 });

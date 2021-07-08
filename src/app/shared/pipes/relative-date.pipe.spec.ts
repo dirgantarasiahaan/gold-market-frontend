@@ -3,7 +3,7 @@ import { RelativeDatePipe } from './relative-date.pipe';
 describe('RelativeDatePipe', () => {
   const date: Date = new Date()
   const customeDate: RelativeDatePipe = new RelativeDatePipe()
-  const expectDate = 'Kamis, 08 Juli 2021'
+  const expectDate = 'Jumat, 09 Juli 2021'
 
   it('create an instance', () => {
     const pipe = new RelativeDatePipe();

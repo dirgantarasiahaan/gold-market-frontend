@@ -100,6 +100,7 @@ describe('LoginComponent()', () => {
   let element: HTMLElement;
   let element1: HTMLElement;
   let element2: HTMLElement;
+  let loginService: LoginService
 
 
   beforeEach(() => {
@@ -114,6 +115,7 @@ describe('LoginComponent()', () => {
     element = fixture.nativeElement.querySelector('h3')
     element1 = fixture.nativeElement.querySelector('p')
     element2 = fixture.nativeElement.querySelector('button')
+    loginService = TestBed.inject(LoginService)
   })
 
   it('should display original title', () => {

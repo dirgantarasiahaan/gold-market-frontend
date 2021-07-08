@@ -9,6 +9,7 @@ import { ProductsService } from '../../service/products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { from, Observable } from 'rxjs';
 
 describe('ProductsComponent', () => {
   let component: ProductsComponent;
@@ -17,6 +18,7 @@ describe('ProductsComponent', () => {
   let router: Router
   let element: HTMLElement;
   let element2: HTMLElement
+  let productService: ProductsService
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -33,6 +35,7 @@ describe('ProductsComponent', () => {
     router.initialNavigation();
     element = fixture.nativeElement.querySelector('h6')
     element2 = fixture.nativeElement.querySelector('button')
+    productService = TestBed.inject(ProductsService)
 
 
   });
@@ -48,11 +51,6 @@ describe('ProductsComponent', () => {
   it('#H6', () => {
     fixture.detectChanges();
     expect(element.textContent).toEqual("Buy Price")
-  })
-
-  it('#button', () => {
-    fixture.detectChanges();
-    expect(element2.textContent).toEqual("Add Pocket")
   })
 
   beforeEach(() => {
@@ -106,4 +104,210 @@ describe('ProductsComponent', () => {
     expect(component.chartSell).toEqual('btn btn-primary');
     expect(component.chartBuy).toEqual('btn btn-light');
   })
+
+  it('#function addPocket', () => {
+    const response = {}
+    const pocket = {
+      "pocketName" : "testing product",
+      "customer" :{
+          "id" : "4028e4907a5c1183017a5c1311880001"
+      },
+      "product" : {
+          "id" : "c001"
+      }
+  }
+    const spy = spyOn(productService, 'addPocket').and.callFake((pocket): Observable<any> => {
+      return from([response])
+    })
+
+    component.addPocket()
+    expect(spy).toHaveBeenCalled()
+  });
+
+
+  it('#function deletePocket', () => {
+    const response = {}
+    const pocketId = '4028e4907912fcd6017912ff68440001'
+    const spy = spyOn(productService, 'deletePocket').and.callFake((pocketId): Observable<any> => {
+      return from([response])
+    })
+    component.deletePocket(pocketId)
+    expect(spy).toHaveBeenCalled()
+  });
+
+  it('#function updatePocket', () => {
+    const response = {}
+    const pocket = {
+      "id": "402881967a4c839c017a4d400e70000c",
+       "pocketName": "bubu",
+       "pocketQty": 1.0,
+       "customer": {
+           "id": "402881837a4896cd017a48c14dda0003"
+       },
+       "product": {
+           "id": "1"
+       }
+   }
+    const spy = spyOn(productService, 'updatePocketById').and.callFake((pocket): Observable<any> => {
+      return from([response])
+    })
+    component.updatePocket(pocket.pocketName)
+    expect(spy).toHaveBeenCalled()
+  });
+
+  it('#function getPocketByCustIdProdId', () => {
+    const response = [
+      {
+          "id": "4028e4907a7e9682017a7e9dba960000",
+          "pocketName": "pocket 4",
+          "totalAmount": 0.0,
+          "pocketQty": 0.0,
+          "customer": {
+              "id": "8a68e47278f8d7b30178f8d865960001",
+              "firstName": "dirgantara",
+              "lastName": "siahaan",
+              "birthDate": "2020-02-01T17:00:00.000+00:00",
+              "address": "jalan",
+              "status": 1,
+              "username": "dirga",
+              "password": "password",
+              "email": "siahaandirgantara@gmail",
+              "phoneNumber": "0899999"
+          },
+          "product": {
+              "id": "c001",
+              "productName": "Silver",
+              "productPriceBuy": 100,
+              "productPriceSell": 200,
+              "productImage": "../../../../../../assets/3.png",
+              "productStatus": 1,
+              "historyPrice": [
+                  {
+                      "id": "8a68e47278fdeeed0178fdf089ca0001",
+                      "historyDate": "2021-04-23T08:55:02.826+00:00",
+                      "priceBuy": 300,
+                      "priceSell": 350,
+                      "product": {
+                          "id": "c001",
+                          "productName": "Silver",
+                          "productPriceBuy": 100,
+                          "productPriceSell": 200,
+                          "productImage": "../../../../../../assets/3.png",
+                          "productStatus": 1,
+                          "createdAt": "2021-04-21T17:00:00.000+00:00",
+                          "updatedAt": "2021-04-21T17:00:00.000+00:00"
+                      }
+                  }
+              ],
+              "createdAt": "2021-04-21T17:00:00.000+00:00",
+              "updatedAt": "2021-04-21T17:00:00.000+00:00"
+          }
+      },
+      {
+          "id": "4028e4907a5c1183017a5c14de530004",
+          "pocketName": "testing product",
+          "totalAmount": 10000.0,
+          "pocketQty": 100.0,
+          "customer": {
+              "id": "8a68e47278f8d7b30178f8d865960001",
+              "firstName": "dirgantara",
+              "lastName": "siahaan",
+              "birthDate": "2020-02-01T17:00:00.000+00:00",
+              "address": "jalan",
+              "status": 1,
+              "username": "dirga",
+              "password": "password",
+              "email": "siahaandirgantara@gmail",
+              "phoneNumber": "0899999"
+          },
+          "product": {
+              "id": "c001",
+              "productName": "Silver",
+              "productPriceBuy": 100,
+              "productPriceSell": 200,
+              "productImage": "../../../../../../assets/3.png",
+              "productStatus": 1,
+              "historyPrice": [
+                  {
+                      "id": "8a68e47278fdeeed0178fdf089ca0001",
+                      "historyDate": "2021-04-23T08:55:02.826+00:00",
+                      "priceBuy": 300,
+                      "priceSell": 350,
+                      "product": {
+                          "id": "c001",
+                          "productName": "Silver",
+                          "productPriceBuy": 100,
+                          "productPriceSell": 200,
+                          "productImage": "../../../../../../assets/3.png",
+                          "productStatus": 1,
+                          "createdAt": "2021-04-21T17:00:00.000+00:00",
+                          "updatedAt": "2021-04-21T17:00:00.000+00:00"
+                      }
+                  }
+              ],
+              "createdAt": "2021-04-21T17:00:00.000+00:00",
+              "updatedAt": "2021-04-21T17:00:00.000+00:00"
+          }
+      }
+  ]
+    const customerId = '8a68e47278f8d7b30178f8d865960001'
+    const productId = 'c001'
+    const spy = spyOn(productService, 'getPocketByCustIdProdId').and.callFake((customerId, productId): Observable<any> => {
+      return from([response])
+    })
+    component.getPocketByCustIdProdId(productId)
+    expect(spy).toHaveBeenCalled()
+  });
+
+  it('#function getPocketById', () => {
+    const response = {}
+    const pocketId = '402881967a4c839c017a4d400e70000c'
+    const spy = spyOn(productService, 'getPocketById').and.callFake((pocketId): Observable<any> => {
+      return from([response])
+    })
+    component.getPocketById(pocketId)
+    expect(spy).toHaveBeenCalled()
+  });
+
+
+  it('#function getProductById', () => {
+    const response = {
+      "id": "c001",
+      "productName": "Silver",
+      "productPriceBuy": 100,
+      "productPriceSell": 200,
+      "productImage": "../../../../../../assets/3.png",
+      "productStatus": 1,
+      "historyPrice": [
+          {
+              "id": "8a68e47278fdeeed0178fdf089ca0001",
+              "historyDate": "2021-04-23T08:55:02.826+00:00",
+              "priceBuy": 300,
+              "priceSell": 350,
+              "product": {
+                  "id": "c001",
+                  "productName": "Silver",
+                  "productPriceBuy": 100,
+                  "productPriceSell": 200,
+                  "productImage": "../../../../../../assets/3.png",
+                  "productStatus": 1,
+                  "createdAt": "2021-04-21T17:00:00.000+00:00",
+                  "updatedAt": "2021-04-21T17:00:00.000+00:00"
+              }
+          }
+      ],
+      "createdAt": "2021-04-21T17:00:00.000+00:00",
+      "updatedAt": "2021-04-21T17:00:00.000+00:00"
+  }
+    const productId = 'c001'
+    const spy = spyOn(productService, 'getProductById').and.callFake((productId): Observable<any> => {
+      return from([response])
+    })
+    component.getProductById(productId)
+    expect(spy).toHaveBeenCalled()
+  });
 });
+
+
+
+

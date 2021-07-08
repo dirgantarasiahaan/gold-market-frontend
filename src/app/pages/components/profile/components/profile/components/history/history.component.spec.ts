@@ -7,6 +7,7 @@ import { Location } from "@angular/common"
 import { HistoryComponent } from './history.component';
 import { TransactionService } from 'src/app/pages/components/products/components/transaction/service/transaction.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { from } from 'rxjs';
 
 describe('HistoryComponent', () => {
   let component: HistoryComponent;
@@ -14,6 +15,7 @@ describe('HistoryComponent', () => {
   let location: Location
   let router: Router
   let element: HTMLElement;
+  let transactionService: TransactionService
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -55,9 +57,21 @@ it(`should have as subtitle 'Products`, () => {
     fixture = TestBed.createComponent(HistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    transactionService = TestBed.inject(TransactionService)
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('#Transaction Service', () => {
+    const response = []
+    const customerId = '8a68e47278f8d7b30178f8d865960001'
+    const spy = spyOn(transactionService, 'historyPurchases').and.callFake((customerId) => {
+        return from([response])
+    })
+    component.historyPuchases = response
+    component.getHistory()
+    expect(spy).toHaveBeenCalled()
   });
 });

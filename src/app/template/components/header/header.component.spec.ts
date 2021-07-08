@@ -3,6 +3,7 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, getTestBed, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
+import { from, Observable } from 'rxjs';
 import { ProductsService } from 'src/app/pages/components/products/service/products.service';
 import { NavbarDirective } from 'src/app/shared/directives/navbar/navbar.directive';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -31,6 +32,7 @@ describe('HeaderComponent', () => {
     httpMock = TestBed.inject(HttpTestingController);
     appNavbar = fixture.debugElement.query(By.directive(NavbarDirective))
     component = fixture.componentInstance;
+    service = TestBed.inject(ProductsService)
   });
 
 
@@ -52,4 +54,27 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('#function getAllProductCustomer', () => {
+    const response = []
+    const customerId = '8a68e47278fdeeed0178fdf13eef0002'
+    const spy = spyOn(service, 'getProductsByCustomerId').and.callFake((customerId): Observable<any> => {
+      return from([response])
+    })
+
+    component.getAllProductCustomer()
+    expect(spy).toHaveBeenCalled()
+
+  });
+
+
+  it('#function sessionstorage', () => {
+    const productId: string = '12121212'
+    const search: string = '123213213'
+    const image: string = '123213'
+
+    expect(component.getData(productId, search, image)).toBeUndefined()
+
+  });
+
 });
