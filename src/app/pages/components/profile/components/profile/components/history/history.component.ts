@@ -15,29 +15,6 @@ export class HistoryComponent implements OnInit {
 
   historyPuchases: History[]
 
-  transactions = [{
-    method: "Buy",
-    date: "25 March",
-    productname: "Gold",
-    quantity: "1 gram",
-    price: "Rp.850.000"
-  },{
-    method: "Buy",
-    date: "25 March",
-    productname: "Gold",
-    quantity: "1 gram",
-    price: "Rp.850.000"
-
-  }
-  ,{
-    method: "Buy",
-    date: "25 March",
-    productname: "Gold",
-    quantity: "1 gram",
-    price: "Rp.850.000"
-  }
-]
-
   constructor(
     private readonly service: TransactionService
   ) { }
@@ -48,33 +25,12 @@ export class HistoryComponent implements OnInit {
 
   getHistory(){
     this.service.historyPurchases(this.customerId).subscribe((response:any) => {
-
-
       const data = {
         purchaseDate: response.purchaseDate,
         purchaseType: response.purchaseType,
         price: response.purchaseDetails
-        // price: response[0].price,
-        // quantityInGram: response.purchaseDetails.quantityInGram,
-        // productName: response.purchaseDetails[0].pocket.pocketName
       }
-      console.log(data);
-
-      console.log(response);
-      console.log(response[0].purchaseDate);
-
       this.historyPuchases = response
-      console.log('#########');
-
-      console.log(this.historyPuchases);
-
-
-
-
-
-
     })
-
   }
-
 }

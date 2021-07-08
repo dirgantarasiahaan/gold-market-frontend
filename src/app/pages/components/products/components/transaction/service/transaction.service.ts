@@ -18,13 +18,13 @@ export class TransactionService {
 
   purchase(customerId: string, payload: PurchaseDetail): Observable<any> {
     return this.http
-      .post<any>(`${API_BASE_URL}/customer/${customerId}/purchases`, payload)
+      .post<any>(`http://localhost:8888/customer/${customerId}/purchases`, payload)
       .pipe();
   }
 
   historyPurchases(customerId: string): Observable<any> {
     return this.http
-      .get(`${API_BASE_URL}/customer/${customerId}/purchases`)
+      .get(`http://localhost:8888/customer/${customerId}/purchases`)
       .pipe(retry(3))
   }
 

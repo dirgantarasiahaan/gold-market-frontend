@@ -28,4 +28,8 @@ describe('BuyChartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create', () => {
+    expect(component.no).toEqual(0);
+  });
 });

@@ -22,5 +22,13 @@ describe('RouteGuard', () => {
     expect(guard).toBeTruthy();
   });
 
+  it('be able to hit route when user is logged in', () => {
+    expect(guard.canActivate).toBeTruthy()
+});
+
+it('be able to hit route when user is logged in', () => {
+  expect(guard.canActivateChild).toBeTruthy()
+});
+
 
 });

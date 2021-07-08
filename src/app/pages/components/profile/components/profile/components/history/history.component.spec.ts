@@ -13,6 +13,7 @@ describe('HistoryComponent', () => {
   let fixture: ComponentFixture<HistoryComponent>;
   let location: Location
   let router: Router
+  let element: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,7 +26,9 @@ describe('HistoryComponent', () => {
     router = TestBed.inject(Router)
         location = TestBed.inject(Location)
         fixture = TestBed.createComponent(HistoryComponent);
+        component = fixture.componentInstance;
         router.initialNavigation();
+        element = fixture.nativeElement.querySelector('h5')
   });
 
   it('navigate to "" redirect you to /history', fakeAsync(() => {
@@ -34,6 +37,19 @@ describe('HistoryComponent', () => {
         expect(location.path()).toBe('/')
     })
 }))
+
+it('#h5', () => {
+  fixture.detectChanges();
+  expect(element.textContent).toEqual("")
+})
+
+it(`should have as title 'My Transactions`, () => {
+  expect(component.title).toEqual('My Transactions');
+});
+
+it(`should have as subtitle 'Products`, () => {
+  expect(component.subtitle).toEqual('Products');
+});
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HistoryComponent);

@@ -24,7 +24,6 @@ export class ProfileComponent implements OnInit {
   }
 
   active: string;
-  name: string = 'Wijaya Dodo'
   username: string
 
   logout(): void{

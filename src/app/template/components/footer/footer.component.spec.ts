@@ -22,4 +22,10 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should logo ../../../../assets/Mandiri_logo.png', () => {
+    fixture.detectChanges();
+    expect(component.mandiriLogo).toEqual("../../../../assets/Mandiri_logo.png")
+  })
+  
 });

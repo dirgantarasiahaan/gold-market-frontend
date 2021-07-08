@@ -36,14 +36,4 @@ describe('BenefitComponent', () => {
     fixture.detectChanges();
     expect(element.textContent).toEqual("Why Mandiri Gold ?")
   })
-
-  it('should display h5', () => {
-    fixture.detectChanges();
-    expect(element.textContent).toEqual("Why Mandiri Gold ?")
-  })
-
-  it('should display p', () => {
-    fixture.detectChanges();
-    expect(element.textContent).toEqual("We have free delivery service to all city in indonesia.")
-  })
 });

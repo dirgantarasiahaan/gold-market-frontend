@@ -47,4 +47,22 @@ describe('SettingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should title', () => {
+    expect(component.title).toEqual('Setting Profile')
+  });
+
+  it('should form', () => {
+    expect(component.form.valid).toBeTruthy()
+    component.form.controls['firstName'].setValue('test')
+    component.form.controls['lastname'].setValue('test')
+    component.form.controls['username'].setValue('test')
+    component.form.controls['password'].setValue('test')
+    component.form.controls['email'].setValue('test')
+    component.form.controls['status'].setValue(1)
+    component.form.controls['birthDate'].setValue('test')
+    component.form.controls['address'].setValue('test')
+    component.form.controls['phone'].setValue('test')
+    expect(component.form.valid).not.toBeNull()
+  });
 });

@@ -40,4 +40,8 @@ describe('WishlistComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should title : My Wishlist ', () => {
+    expect(component.title).toEqual('My Wishlist')
+  });
 });

@@ -17,7 +17,7 @@ export class LoginService {
   ) { }
 
   login(credentials: { username: string, password: string}): Observable<Login>{
-    return this.http.post(`${API_BASE_URL}/login`, credentials)
+    return this.http.post(`http://localhost:8888/login`, credentials)
       .pipe(
         retry(3),
         map((response:any) => response)

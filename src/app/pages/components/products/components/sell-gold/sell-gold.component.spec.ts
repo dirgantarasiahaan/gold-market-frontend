@@ -28,4 +28,11 @@ describe('SellGoldComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('submiting  a form transaction', () => {
+    expect(component.formTransaction.valid).toBeTrue();
+    component.formTransaction.controls['idr'].setValue(1)
+    component.formTransaction.controls['valueOnGram'].setValue(100)
+    expect(component.formTransaction.valid).toBeTrue();
+  })
 });

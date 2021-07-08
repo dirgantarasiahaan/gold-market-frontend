@@ -43,20 +43,6 @@ describe('HeaderComponent', () => {
       expect(service).toBeTruthy();
     }))
 
-    describe('#getProducts', () => {
-      it('should be observable', () => {
-        const customerId = '8a68e47278f8d7b30178f8d865960001'
-
-        service.getProductsByCustomerId(customerId).subscribe((response: any) => {
-            expect(response).toBeTruthy()
-        })
-
-        const request = httpMock.expectOne(`http://localhost:8888/customer/${customerId}/products`)
-        expect(request.request.method).toBe('GET')
-
-      })
-    })
-
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;

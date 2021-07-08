@@ -1,18 +1,20 @@
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { ProfileService } from './profile.service';
 
 describe('ProfileService', () => {
   let service: ProfileService;
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, HttpClientTestingModule],
       providers: [ProfileService]
     });
     service = TestBed.inject(ProfileService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
@@ -22,6 +24,14 @@ describe('ProfileService', () => {
   it('should getUserById api', () => {
     const customerId: string = '8a68e47278f8d7b30178f8d865960001'
     expect(service.getUserById(customerId)).toBeTruthy();
+
+    service.getUserById(customerId).subscribe((response: any) => {
+      expect(response).toEqual(customerId)
+    })
+
+    const request = httpMock.expectOne(`http://localhost:8888/customer/${customerId}`)
+    request.flush(customerId)
+    expect(request.request.method).toBe('GET')
   });
 
   it('should updateUserById api', () => {
@@ -38,5 +48,13 @@ describe('ProfileService', () => {
      phoneNumber: 'test'
     }
     expect(service.updateUserById(customer)).toBeTruthy();
+
+    service.updateUserById(customer).subscribe((response: any) => {
+      expect(response).toEqual(customer)
+    })
+
+    const request = httpMock.expectOne('http://localhost:8888/customer')
+    request.flush(customer)
+    expect(request.request.method).toBe('PUT')
   });
 });

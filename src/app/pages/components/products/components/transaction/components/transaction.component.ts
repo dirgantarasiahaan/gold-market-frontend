@@ -41,14 +41,6 @@ export class TransactionComponent implements OnInit {
 
   }
 
-  submit() {
-    console.log("Form Submitted")
-    console.log(this.form.value)
-    console.log(this.pocketId);
-
-  }
-
-
   purchase(){
     this.purchaseDetail = {
       purchaseType : this.purchaseType,

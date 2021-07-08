@@ -25,8 +25,7 @@ describe('RegisterComponent', () => {
         location = TestBed.inject(Location)
         fixture = TestBed.createComponent(RegisterComponent);
         router.initialNavigation();
-        h4 = fixture.nativeElement.querySelector('h4')
-        p = fixture.nativeElement.querySelector('p')
+
   });
 
   it('should display h4', () => {
@@ -42,8 +41,20 @@ describe('RegisterComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
+    h4 = fixture.nativeElement.querySelector('h4')
+    p = fixture.nativeElement.querySelector('p')
     fixture.detectChanges();
   });
+
+  it('should display h4', () => {
+    fixture.detectChanges();
+    expect(h4.textContent).toEqual("Create Account")
+  })
+
+  it('should display p', () => {
+    fixture.detectChanges();
+    expect(p.textContent).toEqual("Get started with your free account")
+  })
 
   it('navigate to "" redirect you to /register', fakeAsync(() => {
     router.navigate([""]).then(() => {

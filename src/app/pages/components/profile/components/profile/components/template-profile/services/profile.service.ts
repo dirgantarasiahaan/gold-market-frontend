@@ -5,8 +5,6 @@ import { retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Customer } from '../../models/customer';
 
-const API_BASE_URL = `${environment.apiBaseUrl}`
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,14 +16,14 @@ export class ProfileService {
 
   getUserById(customerId: string): Observable<any> {
     return this.http
-    .get(`${API_BASE_URL}/customer/${customerId}`)
+    .get(`http://localhost:8888/customer/${customerId}`)
     .pipe(retry(5))
   }
 
 
   updateUserById(payload: Customer): Observable<Customer> {
     return this.http
-    .put<Customer>(`${API_BASE_URL}/customer`, payload)
+    .put<Customer>(`http://localhost:8888/customer`, payload)
     .pipe(retry(5))
   }
 }

@@ -20,49 +20,49 @@ export class ProductsService {
 
   addPocket(payload: Products): Observable<Products> {
     return this.http
-    .post<Products>(`${API_BASE_URL}/pocket`, payload)
+    .post<Products>(`http://localhost:8888/pocket`, payload)
       .pipe(retry(5));
   }
 
   getPocketByCustIdProdId(custId: string, prodId: string): Observable<Products[]>{
     return this.http
-      .get<Products[]>(`${API_BASE_URL}/customer/${custId}/product/${prodId}/pockets`)
+      .get<Products[]>(`http://localhost:8888/customer/${custId}/product/${prodId}/pockets`)
       .pipe(retry(5))
   }
 
   getProductsByCustomerId(customerId: string): Observable<Product[]> {
     return this.http
-    .get<Product[]>(`${API_BASE_URL}/customer/${customerId}/products`)
+    .get<Product[]>(`http://localhost:8888/customer/${customerId}/products`)
     .pipe(retry(5));
   }
 
   deletePocket(pocketId: string): Observable<any>{
     return this.http
-      .delete<any>(`${API_BASE_URL}/pocket/${pocketId}`)
+      .delete<any>(`http://localhost:8888/pocket/${pocketId}`)
       .pipe(retry(5))
   }
 
   getPocketById(pocketId: string): Observable<any>{
     return this.http
-      .get<any>(`${API_BASE_URL}/pocket/${pocketId}`)
+      .get<any>(`http://localhost:8888/pocket/${pocketId}`)
       .pipe(retry(5))
   }
 
   updatePocketById(payload: Products): Observable<any>{
     return this.http
-      .put(`${API_BASE_URL}/pocket`, payload)
+      .put(`http://localhost:8888/pocket`, payload)
       .pipe(retry(5))
   }
 
   getProductHistoryPrice(productId: string): Observable<HistoryPrice[]> {
     return this.http
-      .get<HistoryPrice[]>(`${API_BASE_URL}/product/${productId}/history`)
+      .get<HistoryPrice[]>(`http://localhost:8888/product/${productId}/history`)
       .pipe(retry(5))
   }
 
   getProductById(productId: string): Observable<Product>{
     return this.http
-      .get<Product>(`${API_BASE_URL}/product/${productId}`)
+      .get<Product>(`http://localhost:8888/product/${productId}`)
       .pipe(retry(5))
   }
 

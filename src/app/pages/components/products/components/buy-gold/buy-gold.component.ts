@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { HistoryPrice } from '../../models/history-price';
 import { ProductsService } from '../../service/products.service';
@@ -37,8 +37,8 @@ export class BuyGoldComponent implements OnInit {
 
   initForm(){
     this.formTransaction = new FormGroup({
-      idr: new FormControl(''),
-      valueOnGram: new FormControl('')
+      idr: new FormControl('', [Validators.required]),
+      valueOnGram: new FormControl('', Validators.required)
     })
   }
 

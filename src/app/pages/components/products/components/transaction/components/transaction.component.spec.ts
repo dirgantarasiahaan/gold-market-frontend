@@ -11,6 +11,9 @@ import { TransactionComponent } from './transaction.component';
 describe('TransactionComponent', () => {
   let component: TransactionComponent;
   let fixture: ComponentFixture<TransactionComponent>;
+  let element: HTMLElement;
+  let element2: HTMLElement;
+
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,10 +28,25 @@ describe('TransactionComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TransactionComponent);
     component = fixture.componentInstance;
+    element = fixture.nativeElement.querySelector('h5')
+    element2 = fixture.nativeElement.querySelector('p')
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('#h5', () => {
+    fixture.detectChanges();
+    expect(element.textContent).toEqual("Detail Transaction")
+  })
+
+  it('#p', () => {
+    fixture.detectChanges();
+    expect(element2.textContent).toEqual(" Pocket : Select Pockets")
+  })
+
 });
+
+

@@ -6,7 +6,7 @@ import { Location } from "@angular/common"
 
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from '../login-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoginService } from '../service/login.service';
@@ -60,8 +60,25 @@ describe('#ReactiveForm', () => {
   it('submiting  a form emits a username', () => {
     expect(component.form.valid).toBeFalsy();
     component.form.controls['username'].setValue('dirgaaa')
-    expect(component.form.valid).toBeFalsy();
+    component.form.controls['password'].setValue('password')
+    expect(component.form.valid).toBeTrue();
     component.submitForm();
+  })
+
+  it('function submit', () => {
+    expect(component.submitForm).toBeTruthy()
+  })
+
+  it('function submit test', () => {
+    component.form = new FormGroup({
+      username: new FormControl('dirga', [Validators.required, Validators.minLength(5)]),
+      password: new FormControl('password', [Validators.required, Validators.minLength(5)])
+    })
+      sessionStorage.setItem('credentials', 'qwertyuiop');
+      sessionStorage.setItem('id', '123456789');
+
+      let mock = component.submitForm();
+      expect(mock).toBeUndefined();
   })
 
 })
