@@ -90,9 +90,8 @@ describe('BuyGoldComponent', () => {
     expect(spy).toHaveBeenCalled()
   });
 
-  it('submiting detail', () => {
-    expect(component.detailItem()).toBeUndefined()
-  })
-
+  // it('submiting detail', () => {
+  //   expect(component.detailItem()).toBeUndefined()
+  // })
 
 });
